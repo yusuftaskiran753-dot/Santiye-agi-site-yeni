@@ -30,7 +30,11 @@ enum WorkSector {
   nakliye('Nakliye / Lojistik'),
   isGuvenligi('İş güvenliği'),
   olcme('Harita / Ölçme'),
-  kalite('Kalite kontrol / Laboratuvar');
+  kalite('Kalite kontrol / Laboratuvar'),
+  insaat('İnşaat'),
+  mermer('Mermer'),
+  maden('Maden'),
+  orman('Orman');
 
   const WorkSector(this.label);
   final String label;
@@ -45,6 +49,7 @@ enum WorkSector {
       WorkSector.suTesisat,
       WorkSector.zemin,
       WorkSector.tunel,
+      WorkSector.insaat,
     ],
     WorkSector.ustyapi => const [
       WorkSector.betonarme,
@@ -55,6 +60,7 @@ enum WorkSector {
       WorkSector.cati,
       WorkSector.iskeleKalip,
       WorkSector.asansor,
+      WorkSector.insaat,
     ],
     WorkSector.elektrik => const [
       WorkSector.ustyapi,
@@ -79,6 +85,9 @@ enum WorkSector {
       WorkSector.nakliye,
       WorkSector.tunel,
       WorkSector.betonSantrali,
+      WorkSector.insaat,
+      WorkSector.maden,
+      WorkSector.orman,
     ],
     WorkSector.yolAsfalt => const [
       WorkSector.hafriyat,
@@ -133,6 +142,7 @@ enum WorkSector {
       WorkSector.ustyapi,
       WorkSector.celikYapi,
       WorkSector.izolasyon,
+      WorkSector.mermer,
     ],
     WorkSector.cati => const [WorkSector.ustyapi, WorkSector.izolasyon],
     WorkSector.iskeleKalip => const [
@@ -161,7 +171,11 @@ enum WorkSector {
       WorkSector.ustyapi,
     ],
     WorkSector.zayifAkim => const [WorkSector.elektrik, WorkSector.ustyapi],
-    WorkSector.peyzaj => const [WorkSector.ustyapi, WorkSector.altyapi],
+    WorkSector.peyzaj => const [
+      WorkSector.ustyapi,
+      WorkSector.altyapi,
+      WorkSector.orman,
+    ],
     WorkSector.prefabrik => const [WorkSector.ustyapi, WorkSector.celikYapi],
     WorkSector.restorasyon => const [WorkSector.ustyapi, WorkSector.izolasyon],
     WorkSector.betonSantrali => const [
@@ -174,6 +188,10 @@ enum WorkSector {
       WorkSector.hafriyat,
       WorkSector.betonSantrali,
       WorkSector.yolAsfalt,
+      WorkSector.insaat,
+      WorkSector.mermer,
+      WorkSector.maden,
+      WorkSector.orman,
     ],
     WorkSector.isGuvenligi => WorkSector.values,
     WorkSector.olcme => const [
@@ -185,6 +203,38 @@ enum WorkSector {
       WorkSector.betonarme,
       WorkSector.yolAsfalt,
       WorkSector.betonSantrali,
+    ],
+    WorkSector.insaat => const [
+      WorkSector.ustyapi,
+      WorkSector.altyapi,
+      WorkSector.betonarme,
+      WorkSector.celikYapi,
+      WorkSector.hafriyat,
+      WorkSector.nakliye,
+      WorkSector.betonSantrali,
+      WorkSector.iskeleKalip,
+      WorkSector.elektrik,
+      WorkSector.mekanik,
+    ],
+    WorkSector.mermer => const [
+      WorkSector.maden,
+      WorkSector.nakliye,
+      WorkSector.ustyapi,
+      WorkSector.cephe,
+      WorkSector.hafriyat,
+    ],
+    WorkSector.maden => const [
+      WorkSector.hafriyat,
+      WorkSector.nakliye,
+      WorkSector.mermer,
+      WorkSector.jeoteknik,
+      WorkSector.betonSantrali,
+      WorkSector.zemin,
+    ],
+    WorkSector.orman => const [
+      WorkSector.nakliye,
+      WorkSector.peyzaj,
+      WorkSector.hafriyat,
     ],
   };
 }
@@ -224,14 +274,64 @@ enum TradeProfession {
   tesisatci('Tesisatçı'),
   elektrikci('Elektrikçi'),
   kaynakci('Kaynakçı'),
-  vincOperatoru('Vinç operatörü');
+  vincOperatoru('Vinç operatörü'),
+  ustabasi('Ustabaşı'),
+  bekci('Bekçi'),
+  guvenlikGorevlisi('Güvenlik görevlisi'),
+  kepceOperatoru('Kepçe / Ekskavatör operatörü'),
+  loderOperatoru('Loder operatörü'),
+  greyderOperatoru('Greyder operatörü'),
+  dozerOperatoru('Dozer operatörü'),
+  silindirOperatoru('Silindir operatörü'),
+  finiserOperatoru('Finişer operatörü'),
+  kuleVincOperatoru('Kule vinç operatörü'),
+  forkliftOperatoru('Forklift operatörü'),
+  betonPompaOperatoru('Beton pompası operatörü'),
+  kaziciOperatoru('Hidrolik kırıcı operatörü'),
+  sondorOperatoru('Sondaj / Fore kazık operatörü'),
+  kamyonSoforu('Kamyon şoförü'),
+  tirSoforu('Tır şoförü'),
+  mikserSoforu('Mikser şoförü'),
+  servisSoforu('Servis / Araç şoförü'),
+  tamirci('Makine bakım / Tamirci'),
+  lastikci('Lastikçi / Yağcı'),
+  fayansci('Fayansçı / Seramikçi'),
+  alcipanci('Alçıpancı'),
+  catiUstasi('Çatı ustası'),
+  yalitimci('Yalıtımcı'),
+  asfaltci('Asfaltçı'),
+  dogramaci('Doğramacı (PVC / Alüminyum)'),
+  celikMontajci('Çelik montajcı'),
+  iskeleci('İskeleci'),
+  parkeci('Parkeci / Zemin kaplamacı'),
+  topograf('Topograf / Harita teknikeri'),
+  jeolog('Jeolog'),
+  statikMuhendisi('Statik proje mühendisi'),
+  teknikRessam('Teknik ressam / Çizimci'),
+  kaliteKontrolcu('Kalite kontrol uzmanı'),
+  laboratuvarTeknisyeni('Laboratuvar teknisyeni'),
+  depocu('Depocu / Ambar sorumlusu'),
+  muhasebeci('Muhasebeci / Ön muhasebe'),
+  ofisPersoneli('Ofis personeli'),
+  asci('Şantiye aşçısı'),
+  temizlikGorevlisi('Temizlik görevlisi'),
+  saglikMemuru('Şantiye sağlık memuru'),
+  patlatmaci('Patlatmacı / Ateşleyici'),
+  ocakUstasi('Ocak ustası'),
+  mermerUstasi('Mermer ustası / Kesimci'),
+  madenci('Madenci'),
+  ormanIsci('Orman işçisi'),
+  motorluTestereci('Motorlu testereci / Ağaç kesim'),
+  peyzajci('Peyzajcı / Bahçıvan');
 
   const TradeProfession(this.label);
   final String label;
 
   /// İhaleye teklif verebilen meslekler (varsayılan).
   bool get canBidTender =>
-      this == TradeProfession.taseron || this == TradeProfession.formen;
+      this == TradeProfession.taseron ||
+      this == TradeProfession.formen ||
+      this == TradeProfession.ustabasi;
 
   /// İhale açabilen meslek.
   bool get canOpenTender =>

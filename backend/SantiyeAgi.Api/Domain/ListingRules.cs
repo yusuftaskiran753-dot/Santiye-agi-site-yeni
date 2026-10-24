@@ -6,7 +6,33 @@ namespace SantiyeAgi.Api.Domain;
 public static class ListingRules
 {
     public static readonly string[] Kinds = ["yuk", "makine", "malzeme", "personel", "sicil"];
-    private static readonly string[] WorkerRoles = ["ekskavatorOp", "silindirOp", "greyderOp", "finiserOp", "vincOp", "tirSoforu", "ustabasi", "isci"];
+    // Uygulamadaki WorkerRole adlarıyla birebir aynı olmalı (test/backend_listing_parity_test.dart denetler).
+    private static readonly string[] WorkerRoles =
+    [
+        "ekskavatorOp", "silindirOp", "greyderOp", "finiserOp", "vincOp", "tirSoforu", "ustabasi", "isci",
+        "dozerOp", "loderOp", "bekoloderOp", "miniYukleyiciOp", "forkliftOp", "kuleVincOp", "betonPompaOp",
+        "kiriciOp", "sondorOp", "kamyonSoforu", "mikserSoforu", "servisSoforu", "forman", "muhendis",
+        "tekniker", "santiyeSefi", "bekci", "guvenlik", "kaynakci", "elektrikci", "tesisatci", "kalipci",
+        "demirci", "betoncu", "sivaBoya", "tamirci", "depocu", "puantor", "patlatmaci", "madenci",
+        "mermerUstasi", "ormanIsci"
+    ];
+    // Uygulamadaki MachineType adlarıyla birebir aynı olmalı (test/backend_listing_parity_test.dart denetler).
+    private static readonly string[] MachineTypes =
+    [
+        "ekskavator", "miniEkskavator", "silindir", "tandemSilindir", "lastikliSilindir", "greyder",
+        "finiser", "loder", "paletliLoder", "miniYukleyici", "teleskopik", "bekoloder", "dozer", "skrayper",
+        "vinc", "kuleVinc", "paletliVinc", "platform", "forklift", "betonPompa", "betonMikser", "kazik",
+        "delici", "kirmaEleme", "asfaltKesici", "kompresor", "jenerator", "suTankeri", "silobas", "kamyon",
+        "cekici", "diger", "lastikliEkskavator", "uzunKolEkskavator", "hidrolikKirici", "lastikliLoder",
+        "tir", "damperliDorse", "kayarTabla", "kamyonet", "onTekerKamyon", "eklemliDamper", "rijitDamper",
+        "miniDamper", "yakitTankeri", "vidanjor", "copKamyonu", "tomrukTasiyici", "romork", "hiyap",
+        "orumcekVinc", "gezerVinc", "sepetliPlatform", "santiyeAsansoru", "vibrasyonluSilindir",
+        "toprakSilindiri", "koyunAyagiSilindir", "vibroPlaka", "asfaltFreze", "asfaltPlenti",
+        "betonSantrali", "helikopterMala", "karot", "trencher", "kazikCakma", "kuyuSondaj", "paletliDelici",
+        "jumbo", "tbm", "mobilKirici", "elek", "konveyor", "telTestere", "zincirliKesici", "tomrukYukleyici",
+        "harvester", "forwarder", "skidder", "cipper", "traktor", "suPompasi", "kaynakMakinesi",
+        "isikKulesi", "arozoz", "bitumTankeri", "yolCizgi", "karKureme", "mobilKonteyner"
+    ];
     public static JsonObject Validate(string kind, JsonObject input)
     {
         if (!Kinds.Contains(kind)) throw new ApiError("BAD_INPUT");
@@ -38,7 +64,7 @@ public static class ListingRules
             if (kind == "makine")
             {
                 row.RequiredText("model", 2, 80); row.CheckNumber("hourly", 0, 10000000); row.CheckNumber("daily", 0, 10000000);
-                row.Choice("type", "ekskavator", "silindir", "greyder", "finiser", "loder", "bekoloder", "dozer", "vinc", "kamyon", "diger");
+                row.Choice("type", MachineTypes);
                 row["available"] ??= true; row["with_operator"] ??= true;
             }
             else if (kind == "malzeme")

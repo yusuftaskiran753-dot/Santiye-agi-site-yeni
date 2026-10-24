@@ -69,6 +69,62 @@ IconData machineIcon(MachineType t) => switch (t) {
       MachineType.kirmaEleme => Icons.grain_rounded,
       MachineType.kompresor || MachineType.jenerator => Icons.bolt_rounded,
       MachineType.diger => Icons.handyman_rounded,
+      MachineType.lastikliEkskavator ||
+      MachineType.uzunKolEkskavator ||
+      MachineType.hidrolikKirici ||
+      MachineType.trencher => Icons.precision_manufacturing_rounded,
+      MachineType.lastikliLoder => Icons.front_loader,
+      MachineType.tir ||
+      MachineType.damperliDorse ||
+      MachineType.kayarTabla ||
+      MachineType.kamyonet ||
+      MachineType.onTekerKamyon ||
+      MachineType.eklemliDamper ||
+      MachineType.rijitDamper ||
+      MachineType.miniDamper ||
+      MachineType.yakitTankeri ||
+      MachineType.vidanjor ||
+      MachineType.copKamyonu ||
+      MachineType.tomrukTasiyici ||
+      MachineType.romork ||
+      MachineType.arozoz ||
+      MachineType.bitumTankeri => Icons.local_shipping_rounded,
+      MachineType.hiyap ||
+      MachineType.orumcekVinc ||
+      MachineType.gezerVinc => Icons.crop_rotate_rounded,
+      MachineType.sepetliPlatform ||
+      MachineType.santiyeAsansoru => Icons.elevator_rounded,
+      MachineType.vibrasyonluSilindir ||
+      MachineType.toprakSilindiri ||
+      MachineType.koyunAyagiSilindir ||
+      MachineType.vibroPlaka => Icons.compress_rounded,
+      MachineType.asfaltFreze ||
+      MachineType.asfaltPlenti ||
+      MachineType.yolCizgi => Icons.add_road_rounded,
+      MachineType.betonSantrali ||
+      MachineType.helikopterMala => Icons.water_drop_rounded,
+      MachineType.karot ||
+      MachineType.kazikCakma ||
+      MachineType.kuyuSondaj ||
+      MachineType.paletliDelici ||
+      MachineType.jumbo ||
+      MachineType.tbm => Icons.vertical_align_bottom_rounded,
+      MachineType.mobilKirici ||
+      MachineType.elek ||
+      MachineType.konveyor => Icons.grain_rounded,
+      MachineType.telTestere ||
+      MachineType.zincirliKesici ||
+      MachineType.tomrukYukleyici ||
+      MachineType.harvester ||
+      MachineType.forwarder ||
+      MachineType.skidder ||
+      MachineType.cipper ||
+      MachineType.traktor ||
+      MachineType.karKureme => Icons.agriculture_rounded,
+      MachineType.suPompasi => Icons.water_drop_rounded,
+      MachineType.kaynakMakinesi ||
+      MachineType.isikKulesi => Icons.bolt_rounded,
+      MachineType.mobilKonteyner => Icons.warehouse_rounded,
     };
 
 ThemeData buildTheme(Brightness brightness) {
