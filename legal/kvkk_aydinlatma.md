@@ -1,6 +1,6 @@
 # Kişisel Verilerin İşlenmesine İlişkin Aydınlatma Metni
 
-**Son güncelleme:** 20.10.2026
+**Son güncelleme:** 24.10.2026
 
 **Veri sorumlusu:** Yusuf Taşkıran ("Veri Sorumlusu")
 **Adres:** Merkez, Sivas / Türkiye
@@ -12,6 +12,7 @@
 - **İletişim:** Telefon numarası
 - **Mesleki bilgi:** Firma adı, meslek/rol, çalışılan il, deneyim yılı ve belgeler (sicil kartı oluşturulursa)
 - **Müşteri işlem:** İlanlar, teklif ve talepler, anlaşma kayıtları, ödeme planı işaretleri, puan ve yorumlar, şikâyet ve engelleme kayıtları, bildirimler
+- **Sosyal içerik:** Gönderi ve yorum metinleri, profil/kapak/gönderi/hikaye fotoğrafları, beğeni ve takip bilgisi, ihale teklifi ve açıklaması, engelleme sebebi ve kanıt fotoğrafı. Fotoğraflar kişisel veridir ve yalnızca sizin seçip paylaştığınız içeriklerden oluşur.
 - **Konum:** Kullanıcının ilana kendisi girdiği il ve tesis/makine konumu. Ayrıca kullanıcının başlattığı süreli canlı paylaşımda yaklaşık/tam cihaz konumu, ölçüm zamanı, doğruluk ve varsa hız/yön işlenir. Son ölçüm yalnız anlaşmanın diğer tarafına gösterilir; rota geçmişi oluşturulmaz.
 - **İsteğe bağlı asistan:** Ayrı onay verilirse yazılan metin ve seçili il Google Gemini’ye gönderilir. Onay verilmezse yorumlama cihazda yapılır.
 - **Finans (sınırlı):** Mağaza işlem kimliği, satın alınan ürün, abonelik süresi, kredi hareketleri. Kart bilgisi işlenmez.
@@ -25,6 +26,7 @@
 | Kullanıcının başlattığı süreli konumu anlaşma tarafına göstermek | Talep edilen hizmetin ifası; işletim sistemi izni ve kullanıcı başlatmasıyla sınırlı |
 | İsteğe bağlı metin/il bilgisini Gemini’ye göndermek | Ayrı, isteğe bağlı kullanıcı onayı; onaysız yerel kullanım mümkündür |
 | Premium ve kredinin mağaza üzerinden doğrulanması ve tanımlanması | (c) Sözleşmenin ifası |
+| Şantiye Akışı: gönderi, yorum, hikaye ve fotoğraf paylaşımı; ihale teklifi | (c) Sözleşmenin kurulması ve ifası; fotoğraf ve yazı kullanıcının kendi seçimiyle paylaşılır |
 | Kötüye kullanım, dolandırıcılık ve spamın önlenmesi; şikâyet ve engelleme; uygunsuz içeriğin kaldırılması | (f) Meşru menfaat |
 | Bilgi güvenliğinin sağlanması, işlem kayıtlarının tutulması | (ç) Hukuki yükümlülük, (f) Meşru menfaat |
 | Yetkili kurum ve mahkemelerin taleplerinin karşılanması, uyuşmazlıklarda delil | (ç) Hukuki yükümlülük, (e) Bir hakkın tesisi, kullanılması veya korunması |

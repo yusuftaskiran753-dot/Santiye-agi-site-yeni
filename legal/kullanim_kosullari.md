@@ -1,6 +1,6 @@
 # Şantiye Ağı Kullanım Koşulları
 
-**Son güncelleme:** 20.10.2026
+**Son güncelleme:** 24.10.2026
 
 ## 1. Taraflar ve tanımlar
 
@@ -54,6 +54,20 @@ Kullanıcı aşağıdaki davranışlarda bulunmayacağını kabul eder:
 ## 6. Puan ve yorumlar
 
 Puan yalnızca **tamamlanmış** bir anlaşma kaydından sonra verilebilir. Her anlaşma için her taraf yalnızca bir kez puan verebilir. İşletici, puanların doğruluğunu garanti etmez. Kurallara aykırı yorumları kaldırabilir.
+
+## 6A. Şantiye Akışı, yorum, hikaye ve ihale
+
+6A.1. Şantiye Akışı'nda paylaştığınız yazı, fotoğraf (profil, kapak, gönderi ve hikaye), yorum ve ihale teklifi başka kullanıcılara görünebilir. İçeriğin hukuki sorumluluğu size aittir. Başkasına ait veya izin almadığınız kişileri gösteren fotoğrafı paylaşamazsınız.
+
+6A.2. Hakaret, küfür, tehdit, iftira ve karalama yasaktır (5237 sayılı Türk Ceza Kanunu). Uygulama küfürlü içeriği otomatik engellemeye çalışır; bu süzgeç her ifadeyi yakalamayı garanti etmez. Aykırı içerik bildirim almadan kaldırılabilir, hesap kısıtlanabilir.
+
+6A.3. Yorum yazarken "Bu kişiyle çalıştınız mı?" sorusu yanıtlanır. Çalışmadıysanız kanıt (fotoğraf veya açıklama) eklemeniz gerekir; kanıtsız olumsuz yorum yayına çıkmaz, incelemede bekler.
+
+6A.4. Uygulama içi sohbet mesajları ve hikayeler 24 saat sonra otomatik silinir. Anlaşma kayıtları, ilanlar ve teklifler bu kapsamda değildir.
+
+6A.5. Bir kullanıcıyı engellemek için sebep seçilmesi ve kanıt fotoğrafı eklenmesi gerekir. Kanıt yalnızca güvenlik kaydı içindir, karşı tarafa gösterilmez; asılsız veya kötü niyetli gerekçe şikâyet konusu olabilir.
+
+6A.6. İhalede teklif verenin telefon numarası, ihaleyi açan kişi onaylayana kadar iki tarafa da gösterilmez. Fiyat teklifinde açıklama zorunludur. İhale, duyuru ve teklif toplama içindir; İşletici ihale sözleşmesinin tarafı değildir, ödemeye aracılık etmez.
 
 ## 7. Dijital haklar, ücretler ve iade
 

@@ -1,6 +1,6 @@
 # Şantiye Ağı Gizlilik Politikası
 
-**Son güncelleme:** 20.10.2026
+**Son güncelleme:** 24.10.2026
 **Veri sorumlusu:** Yusuf Taşkıran
 **İletişim:** Merkez, Sivas / Türkiye — yusuftaskiran753@gmail.com
 
@@ -11,6 +11,7 @@
 | Ad, telefon, hesap/oturum kimliği, firma, rol, çalışılan il, sicil bilgileri | Hesap, profil ve iletişim. Telefon herkese açık değildir; ilan için iletişim hakkı açan kullanıcıya, teklif/talebin iki tarafına ve anlaşmanın taraflarına gösterilir. Teklif taraflarının erişimi kabulden önce başlayabilir; ret/geri çekme tek başına erişimi kaldırmaz. |
 | İlan, teklif, anlaşma, adres, tutar, ödeme takip işaretleri, puan ve yorumlar | İlanlar/profiller/puanlar kullanıcıların erişimine, özel teklif ve anlaşmalar ilgili tarafların erişimine sunulur. İş bedeli uygulama üzerinden tahsil edilmez. |
 | Kullanıcının seçtiği fotoğraflar ve açıklamalar | Profilde yapılan işler ve ilgili içerikleri paylaşmak. Galeri topluca taranmaz; yalnız seçtiğiniz içerikler yüklenir. |
+| Şantiye Akışı içeriği: gönderi, yorum, beğeni, takip, hikaye, profil ve kapak fotoğrafı, ihale teklifi ve açıklaması, engelleme sebebi ve kanıt fotoğrafı | Sosyal akışı çalıştırmak, kötüye kullanımı önlemek. Bu içerikler şu an yalnız cihazınızda saklanır; sunucuya aktarılırsa bu metin güncellenir. Hikayeler ve sohbet mesajları 24 saat sonra silinir. Kamera yalnız çekim için açılır, galeri topluca taranmaz; profil/kapak fotoğrafını istediğiniz zaman kaldırabilirsiniz. Engelleme kanıtı karşı tarafa gösterilmez. |
 | Kullanıcının girdiği il, saha/tesis/makine noktaları | İlanları ve saha kayıtlarını haritada göstermek. |
 | İsteğe bağlı cihaz konumu | Canlı paylaşım açıkken son enlem/boylam, ölçüm zamanı, doğruluk ve varsa hız/yön sunucuya gider. Yalnız ilgili anlaşmanın diğer tarafı görebilir. |
 | Asistana yazılan metin ve seçili il | Ayrı Gemini onayı seçilirse en fazla 400 karakterlik metin ve seçili il Google Gemini’ye gönderilir; onaysız kullanım cihazda yorumlanır. |
