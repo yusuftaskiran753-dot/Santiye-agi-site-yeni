@@ -27,7 +27,10 @@ class TenderDetailScreen extends StatelessWidget {
     final tender = app.social.tenderById(tenderId);
     if (tender == null) {
       return Scaffold(
-        appBar: AppBar(title: const Text('İhale')),
+        appBar: AppBar(
+        backgroundColor: Colors.white,
+        surfaceTintColor: Colors.transparent,
+        title: const Text('İhale')),
         body: const EmptyState(
           icon: Icons.search_off_rounded,
           title: 'İhale bulunamadı',
@@ -46,7 +49,10 @@ class TenderDetailScreen extends StatelessWidget {
     final muted = Theme.of(context).colorScheme.onSurfaceVariant;
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(title: const Text('İhale')),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        surfaceTintColor: Colors.transparent,
+        title: const Text('İhale')),
       body: ListView(
         padding: const EdgeInsets.fromLTRB(16, 8, 16, 32),
         children: [

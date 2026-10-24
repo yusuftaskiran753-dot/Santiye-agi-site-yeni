@@ -26,7 +26,10 @@ class TenderListScreen extends StatelessWidget {
     final canOpen = app.myIdentity.profession.canOpenTender;
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(title: const Text('İhaleler')),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        surfaceTintColor: Colors.transparent,
+        title: const Text('İhaleler')),
       floatingActionButton: canOpen
           ? FloatingActionButton.extended(
               key: const Key('tender-create'),

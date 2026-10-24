@@ -48,7 +48,10 @@ class _TenderAwardScreenState extends State<TenderAwardScreen> {
     final tender = app.social.tenderById(widget.tenderId);
     if (tender == null) {
       return Scaffold(
-        appBar: AppBar(title: const Text('En iyi teklifi seç')),
+        appBar: AppBar(
+        backgroundColor: Colors.white,
+        surfaceTintColor: Colors.transparent,
+        title: const Text('En iyi teklifi seç')),
         body: const EmptyState(
           icon: Icons.search_off_rounded,
           title: 'İhale bulunamadı',
@@ -62,7 +65,10 @@ class _TenderAwardScreenState extends State<TenderAwardScreen> {
     final muted = Theme.of(context).colorScheme.onSurfaceVariant;
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(title: const Text('En iyi teklifi seç')),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        surfaceTintColor: Colors.transparent,
+        title: const Text('En iyi teklifi seç')),
       body: ListView(
         padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
         children: [

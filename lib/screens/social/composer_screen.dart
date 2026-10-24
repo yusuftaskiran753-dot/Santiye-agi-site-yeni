@@ -69,7 +69,10 @@ class _ComposerScreenState extends State<ComposerScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(title: Text(widget.kind.label)),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        surfaceTintColor: Colors.transparent,
+        title: Text(widget.kind.label)),
       body: Form(
         key: _formKey,
         child: ListView(

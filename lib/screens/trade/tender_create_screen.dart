@@ -77,7 +77,10 @@ class _TenderCreateScreenState extends State<TenderCreateScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(title: const Text('İhale aç')),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        surfaceTintColor: Colors.transparent,
+        title: const Text('İhale aç')),
       body: Form(
         key: _formKey,
         child: ListView(
