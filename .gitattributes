@@ -1,0 +1,6 @@
+# Windows betikleri CRLF ister (aksi hâlde cmd.exe etiket/goto satırlarını yanlış okuyabilir);
+# kabuk betikleri LF olmalıdır.
+* text=auto
+*.bat text eol=crlf
+*.sh  text eol=lf
+*.dart text eol=lf

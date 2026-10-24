@@ -1,0 +1,36 @@
+name: santiye_agi
+description: Yük, iş makinesi, malzeme ve operatör ilanları. Taraflar aracısız anlaşır; uygulama ödemeye aracılık etmez.
+publish_to: "none"
+version: 2.1.2+11
+
+environment:
+  sdk: ">=3.9.0 <4.0.0"
+  flutter: ">=3.35.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  provider: ^6.1.5
+  shared_preferences: ^2.5.5
+  in_app_purchase: ^3.2.3
+  supabase_flutter: ^2.18.2
+  flutter_map: ^8.2.2
+  latlong2: ^0.9.1
+  url_launcher: ^6.3.2
+  http: ^1.6.0
+  flutter_secure_storage: ^11.2.0
+  image_picker: ^1.2.1
+  firebase_core: ^4.2.0
+  firebase_messaging: ^16.0.4
+  in_app_purchase_android: ^0.5.0
+  geolocator: ^14.1.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true

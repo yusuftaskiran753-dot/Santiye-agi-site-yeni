@@ -1,0 +1,72 @@
+# Flutter / Dart
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+build/
+coverage/
+*.iml
+.idea/
+.vscode/
+.DS_Store
+
+# Platform hazırlama betiğinin geçici klasörü
+.platform_staging/
+.platform_staging.*/
+
+# Android: yerel ayarlar ve İMZA ANAHTARLARI (asla depoya eklemeyin)
+android/local.properties
+android/key.properties
+android/.gradle/
+android/captures/
+android/app/debug/
+android/app/profile/
+android/app/release/
+*.jks
+*.keystore
+
+# iOS / Xcode
+ios/Pods/
+ios/.symlinks/
+ios/Flutter/Generated.xcconfig
+ios/Flutter/flutter_export_environment.sh
+ios/Flutter/ephemeral/
+ios/Runner/GeneratedPluginRegistrant.*
+**/xcuserdata/
+*.p8
+
+# Gizli bilgiler (servis hesabı anahtarları, ortam dosyaları)
+.env
+.env.*
+*service-account*.json
+*firebase-adminsdk*.json
+play-servis-hesabi.json
+android/app/google-services.json
+/google-services*.json
+ios/Runner/GoogleService-Info.plist
+*.dart-defines.json
+supabase/.temp/
+
+# .NET backend / local PostgreSQL test instance
+**/bin/
+**/obj/
+backend/**/appsettings.Local.json
+backend/**/appsettings.Production.json
+backend/**/uploads/
+tmp/
+output/
+# Customer source archive is an input, not a deployment or source commit.
+/Santiye_Agi_v2.3.0_yenitasarim.zip
+android/.kotlin/
+*.pfx
+*.p12
+*.pem
+*.pgpass
+*preview-session.json
+santiye-vds-test-session.json
+*.backup
+*.dump
+*.enc
+**/recovery.key
