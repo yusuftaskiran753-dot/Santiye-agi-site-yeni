@@ -1,0 +1,226 @@
+{
+  "baseline": "Şantiye Ağı müşteri arşivi v2.1.2+5",
+  "archive_sha256": "557661ECFA3CB93B8A65BE821F82489668684C928DE3E5FD08BEC0F29209ACC1",
+  "files": [
+    {
+      "path": "lib/config.dart",
+      "sha256": "48ef7e29365cf9a5a17cce99065b022bc8641f734062438c46e684ee35a7175f"
+    },
+    {
+      "path": "lib/data/cities.dart",
+      "sha256": "e091822ec3a7e059774831e4bd5caf7d33f32506abbdd69e8ccc61b4d9a251d4"
+    },
+    {
+      "path": "lib/data/demo_data.dart",
+      "sha256": "216b6364e2940716d2ff19df967b2f72d1b535f521d962104390d5ebb8024223"
+    },
+    {
+      "path": "lib/logic/deal_rules.dart",
+      "sha256": "ebbb3cc93cd53c6fb173ec2bac1eaf30e75c2dd8cae9562ae756ed6c2c316583"
+    },
+    {
+      "path": "lib/logic/haul_optimizer.dart",
+      "sha256": "aa58b0c2adab9853b540c26b0d158a2f42252899f60cb0e1396032e8dcc2ce17"
+    },
+    {
+      "path": "lib/logic/load_matcher.dart",
+      "sha256": "c5c967d5f5b00bc281477915137b3464c030ca7634979f3a4db971343fe4486e"
+    },
+    {
+      "path": "lib/main.dart",
+      "sha256": "772ab0a880688aba8145bb641da11cd1ae3207abf6c90640e9ed7f62b050d7b3"
+    },
+    {
+      "path": "lib/models/models.dart",
+      "sha256": "f201c2a8f56615baed2c5b9bbd79d4110f8f0f4c0ac452faaec4f8dc3811ae1c"
+    },
+    {
+      "path": "lib/screens/billing/billing_flows.dart",
+      "sha256": "20cb67328af5bc7f6bbc531a5f3e3d5dd756f047f6258c1067799f79786b1b43"
+    },
+    {
+      "path": "lib/screens/billing/paywall_screen.dart",
+      "sha256": "0e780dd045739377d2842e4a7688104e7a705a8c3e6af8da45716ff02164f458"
+    },
+    {
+      "path": "lib/screens/common/report_sheet.dart",
+      "sha256": "c3013d1893ec79f5fe9c3555d7c32b2d73abe04e6e0608d93d1e532cc1785c77"
+    },
+    {
+      "path": "lib/screens/deals/deal_detail_screen.dart",
+      "sha256": "856b3ecb7f633e9cbbed93b3c5db2a99e9eb81f94b483dcf775b575cc675c841"
+    },
+    {
+      "path": "lib/screens/deals/deal_form_screen.dart",
+      "sha256": "5bdbb1018395b7d5c68a6c24ccfa5b5f8856b3c2eceb470d387a3213374ae447"
+    },
+    {
+      "path": "lib/screens/deals/deal_widgets.dart",
+      "sha256": "ffb42e5cc6590a16115de6c012283e3a8b5f366dfe6847017ddafefdb57a8497"
+    },
+    {
+      "path": "lib/screens/haul/haul_screen.dart",
+      "sha256": "8e650e0c34f01785b6c6b91656d2cf7d547da1845aedcb3dee133bd305da1480"
+    },
+    {
+      "path": "lib/screens/home/home_screen.dart",
+      "sha256": "26629d6b0b69295299db29e5327dcf28fe93459678d2a13e284daddda027b322"
+    },
+    {
+      "path": "lib/screens/listings/cards.dart",
+      "sha256": "18d36fca0957d62ed4302ada5938c728be79b1924401fb00c0486c9d0f7caa75"
+    },
+    {
+      "path": "lib/screens/listings/contact_sheet.dart",
+      "sha256": "26197622c4429f2ab043ed2ea95bd3ab60e777e284076a038aa06bb02e7f3cae"
+    },
+    {
+      "path": "lib/screens/listings/forms/job_form.dart",
+      "sha256": "e54f08dc967e7c0fc301f1bd4c8e60e21a2471796c9fb41afa65ffcbac86bfd8"
+    },
+    {
+      "path": "lib/screens/listings/forms/listing_forms.dart",
+      "sha256": "3fc5fcfccd20a2dc100e2fb5fb9ad3da1002262195c80c16a348314b06969ef8"
+    },
+    {
+      "path": "lib/screens/listings/forms/load_form.dart",
+      "sha256": "e1f402ba362aef45ae5ca1af5473dd655f8b1349a9eb7005ffa291e10ae9b2dd"
+    },
+    {
+      "path": "lib/screens/listings/forms/machine_form.dart",
+      "sha256": "abfad8b62e4ee31c817dc1e7dc7eabff1419dbe8278f4493affdf803084ed08e"
+    },
+    {
+      "path": "lib/screens/listings/forms/material_form.dart",
+      "sha256": "2b40d3b072731dd6e6eb39bc8fa2e29571fa1662ef76a59f007ff332aaea74ab"
+    },
+    {
+      "path": "lib/screens/listings/forms/worker_form.dart",
+      "sha256": "1debc2e9077f900b3460b96c87ac48bab8a8cb8626ea2774ebf56efa589b2ef7"
+    },
+    {
+      "path": "lib/screens/listings/listing_detail_screen.dart",
+      "sha256": "0dd5528d3ae5041188044916059ce4be362218bd18512f97c55e0075d8f9746e"
+    },
+    {
+      "path": "lib/screens/listings/request_sheet.dart",
+      "sha256": "59e236d6b67365b80398d5f275650b42aa5ae961f6642d674ca99ab2e96af1cd"
+    },
+    {
+      "path": "lib/screens/loads/backhaul_screen.dart",
+      "sha256": "131741ced1735078f34410d22b631ef3d90712dba3b75807e0934c4bf3c325e7"
+    },
+    {
+      "path": "lib/screens/market/market_screen.dart",
+      "sha256": "6480dce77bfa4cbd8966ebe0d207feb6222027b4840ec8531a15622743a18cfe"
+    },
+    {
+      "path": "lib/screens/notifications/notifications_screen.dart",
+      "sha256": "d6535b8d65ced62f33ca7dde5682a4139aaaabdd41d067f2698d3cd1b0455e89"
+    },
+    {
+      "path": "lib/screens/onboarding/onboarding_screens.dart",
+      "sha256": "32bb40e84fdb7c61c9f136cd349a393ac81f3a3bb54ce3fdf016bab6d58f4447"
+    },
+    {
+      "path": "lib/screens/onboarding/profile_form.dart",
+      "sha256": "56e20f2a2f4cdb90798b68d5ddc3e151f9153661aa8c066cab709a76f0a94ddd"
+    },
+    {
+      "path": "lib/screens/profile/guide_screen.dart",
+      "sha256": "5182e47ffca4b92105b5ec0c5ea88a734602e31c5c95dd1e9805e1aac3a56954"
+    },
+    {
+      "path": "lib/screens/profile/profile_screen.dart",
+      "sha256": "65d5a0cc38c3e52febb5970328f8f450372b34c600a10c02b2915d69a019bb0c"
+    },
+    {
+      "path": "lib/screens/profile/public_profile_screen.dart",
+      "sha256": "c5f77db6e8b8e7703b9ce16b3e679689a483f2bc63b41af2afc8aaaa7bc1c7d5"
+    },
+    {
+      "path": "lib/screens/search/search_screen.dart",
+      "sha256": "415024b6efe36cc11e8aef21928a23e931298d50d7435391df0b3e1f1ff049cb"
+    },
+    {
+      "path": "lib/screens/shell.dart",
+      "sha256": "8fcb794c5be2e1c49226fcd1d41c059bf405f8356f10a0bb43acaab25b503140"
+    },
+    {
+      "path": "lib/screens/work/request_tile.dart",
+      "sha256": "c8ae07173ded81e01284ee5d837a51e7dad5f013cfb7da917bccbf351d549907"
+    },
+    {
+      "path": "lib/screens/work/work_screen.dart",
+      "sha256": "88e3bc52b5e2802c3a136a3c80c9372ab851e4dba42ebadf51c56584d010c45d"
+    },
+    {
+      "path": "lib/services/app_notice.dart",
+      "sha256": "0cb0fffcf7bd59f70b660144c07b5157de4cae38b8ae8b86dc7b663e41153e6f"
+    },
+    {
+      "path": "lib/services/backend.dart",
+      "sha256": "15d81a73e857b2962e8a81746ddb97807323c052327c69cc2d5a1f97bb312193"
+    },
+    {
+      "path": "lib/services/billing_service.dart",
+      "sha256": "abbb956019522caa4bb1cb32a42d5636d360502d844db2080200ea8725e2516e"
+    },
+    {
+      "path": "lib/services/local_backend.dart",
+      "sha256": "3d44774eed11e11c50d27840e223d2c6212d93915211aa04419ecb292bfb6acd"
+    },
+    {
+      "path": "lib/services/local_store.dart",
+      "sha256": "bbd7f791a5843d337100c2783e72960e1ef6e8250d8bdf150495516306060ab4"
+    },
+    {
+      "path": "lib/services/supabase_backend.dart",
+      "sha256": "f138fc4ffd16d1fb22189a6409c0e422ea3684b5c245f0a3422e77fff9957bf1"
+    },
+    {
+      "path": "lib/services/sync_queue.dart",
+      "sha256": "a2de9f8ad9d7e99365af72cc4eae42adcb6a1f311b45786e9619ab5b6f37d91b"
+    },
+    {
+      "path": "lib/state/app_state.dart",
+      "sha256": "b47d7ea6c26270fd90fda019ec2255bc7259336f07b00675444f0161d429b44d"
+    },
+    {
+      "path": "lib/theme.dart",
+      "sha256": "7e099c11071e682708d54b1421e11a01bcc285f33201eb9ba1a9daf862721362"
+    },
+    {
+      "path": "lib/utils/content_filter.dart",
+      "sha256": "47c4f30b044a283b4da9230d2f27941b0573e4e1896cbd646c6bae97ea670223"
+    },
+    {
+      "path": "lib/utils/format.dart",
+      "sha256": "96528ec8d71eee93848762841454459e2d225e5ee486aacbde28300ddc49df86"
+    },
+    {
+      "path": "lib/utils/validators.dart",
+      "sha256": "fa0e1dfa70284f7cc673a057673680f9f101fc26efd0b09239ea1e7cef18c683"
+    },
+    {
+      "path": "lib/widgets/city_picker.dart",
+      "sha256": "ffc55d5de4b2633166d0f94ee94ba46fe37f24a08b12ed5b6c875d9a218f459e"
+    },
+    {
+      "path": "lib/widgets/common.dart",
+      "sha256": "8c3517ea2eb676888425f7e6d70d7e53ef7e86e8639a8a0cc53388a6b989619d"
+    },
+    {
+      "path": "lib/widgets/feedback.dart",
+      "sha256": "9944a322210aff420319726729a26d45c1ff3f4b06a52d5eec809dbcc7433d39"
+    },
+    {
+      "path": "lib/widgets/map_view.dart",
+      "sha256": "f5895d60aa8c5318950f3d9d83a7ec6f125a3d21281735cedfe03a29c748456e"
+    },
+    {
+      "path": "pubspec.yaml",
+      "sha256": "2c4297ac5eaf4469e201aefa9a4570cbbb3f24bd7acd68346da73bd345bb395c"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "API_BASE_URL": "https://45.59.70.198",
+  "PUSH_ENABLED": true,
+  "SHOW_SAMPLE_LISTINGS": false,
+  "OPERATOR_NAME": "Yusuf Taşkıran",
+  "SUPPORT_EMAIL": "yusuftaskiran753@gmail.com",
+  "TERMS_URL": "https://yusuftaskiran753-dot.github.io/-santiye-agi/#kullanim-kosullari",
+  "PRIVACY_URL": "https://yusuftaskiran753-dot.github.io/-santiye-agi/#gizlilik",
+  "KVKK_URL": "https://yusuftaskiran753-dot.github.io/-santiye-agi/#kvkk",
+  "ACCOUNT_DELETION_URL": "https://yusuftaskiran753-dot.github.io/-santiye-agi/#hesap-silme"
+}

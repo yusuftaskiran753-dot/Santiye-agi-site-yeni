@@ -1,0 +1,18 @@
+# Android yükleme (upload) anahtarı ayarları.
+#
+# 1) Anahtarı bir kez oluşturun (şifreyi ve dosyayı mutlaka yedekleyin;
+#    kaybederseniz Google Play'e güncelleme yükleyemezsiniz):
+#      keytool -genkey -v -keystore ~/upload-keystore.jks -keyalg RSA -keysize 2048 -validity 10000 -alias upload
+#    Windows: keytool -genkey -v -keystore %USERPROFILE%\upload-keystore.jks -storetype JKS -keyalg RSA -keysize 2048 -validity 10000 -alias upload
+#
+# 2) Bu dosyayı android/key.properties adıyla kopyalayıp değerleri doldurun.
+#    key.properties ve .jks dosyası .gitignore'dadır; depoya EKLEMEYİN.
+#
+# 3) flutter build appbundle --release --dart-define-from-file=config/live-android-push.json
+#    key.properties bulunamazsa yayın derlemesi durur; debug anahtarı kullanılmaz.
+
+storePassword=ANAHTAR_DEPOSU_SIFRESI
+keyPassword=ANAHTAR_SIFRESI
+keyAlias=upload
+# Mutlak yol (Windows'ta ters bölü yerine / kullanın, ör. C:/Users/ad/upload-keystore.jks)
+storeFile=/Users/kullanici/upload-keystore.jks

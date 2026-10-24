@@ -1,0 +1,72 @@
+00:00 +0: loading S:/tmp/customer_demo_runtime/test/customer_demo_audit_test.dart
+00:00 +0: İlk açılış: onay, profil oluşturma ve ana menü
+00:05 +1: Ana menü ve alt sekmeler
+00:08 +2: Pazar Yük
+00:10 +3: Pazar Makine
+  [1m[flutter_map][0m
+    We want to help keep OpenStreetMap available for everyone. Our examples
+    and demo app use the public tile servers, but they are NOT free to use by
+    everyone! Please review whether the OpenStreetMap tile servers are suitable
+    for your project.
+    See:
+      * https://operations.osmfoundation.org/policies/tiles (OSM Tile Usage Policy)
+      * https://docs.fleaflet.dev/osm-warn for more information about this warning
+00:12 +4: Pazar Malzeme
+00:14 +5: Pazar Personel
+00:15 +6: Genel arama
+00:15 +7: İlan ayrıntısı ve talep yuk
+00:16 +8: İlan ayrıntısı ve talep makine
+00:16 +9: İlan ayrıntısı ve talep malzeme
+00:16 +10: İlan ayrıntısı ve talep personel
+00:17 +11: İlan ayrıntısı ve talep sicil
+00:17 +12: Yeni kayıt Yük ilanı ver
+00:17 +13: Yeni kayıt Makinemi ekle
+00:17 +14: Yeni kayıt Ürün / fiyat ekle
+00:18 +15: Yeni kayıt Personel ilanı ver
+00:18 +16: Yeni kayıt Sicil kartım
+00:18 +17: Yeni kayıt Anlaşma kaydı oluştur
+00:18 +18: İşlerim dört sekme
+00:19 +19: Profil örnekleri aç/kapat ve düzenle
+Geri bildirim (gösterilemedi): Profil güncellendi
+00:19 +20: Herkese açık profil ve engellenenler
+Beklenmeyen hata: setState() callback argument returned a Future.
+The setState() method on _BlockedUsersScreenState#b3794 was called with a closure or method that returned a Future. Maybe it is marked as "async".
+Instead of performing asynchronous work inside a call to setState(), first execute the work (without updating the widget state), and then synchronously update the state inside a call to setState().
+00:20 +21: Rehber sekmeleri
+00:20 +22: Boş dönüş eşleştirme
+00:20 +23: Hafriyat örnekleri ve optimizasyon
+  [1m[flutter_map][0m
+    We want to help keep OpenStreetMap available for everyone. Our examples
+    and demo app use the public tile servers, but they are NOT free to use by
+    everyone! Please review whether the OpenStreetMap tile servers are suitable
+    for your project.
+    See:
+      * https://operations.osmfoundation.org/policies/tiles (OSM Tile Usage Policy)
+      * https://docs.fleaflet.dev/osm-warn for more information about this warning
+00:21 +24: Premium ve kredi ekranları
+00:22 +25: Bildirim ekranı
+00:22 +26: Elle anlaşma başlatma
+Geri bildirim (gösterilemedi): Kayıt başlatıldı
+00:22 +27: Talep gönderme ve geri çekme: yuk
+Geri bildirim (gösterilemedi): Nakliye teklifi iletildi. Yanıtı "İşlerim" sekmesinden takip edebilirsiniz.
+00:23 +28: Talep gönderme ve geri çekme: makine
+Geri bildirim (gösterilemedi): Kiralama talebi iletildi. Yanıtı "İşlerim" sekmesinden takip edebilirsiniz.
+00:23 +29: Talep gönderme ve geri çekme: malzeme
+Geri bildirim (gösterilemedi): Sipariş talebi iletildi. Yanıtı "İşlerim" sekmesinden takip edebilirsiniz.
+00:24 +30: Talep gönderme ve geri çekme: personel
+Geri bildirim (gösterilemedi): İş başvurusu iletildi. Yanıtı "İşlerim" sekmesinden takip edebilirsiniz.
+00:24 +31: Talep gönderme ve geri çekme: sicil
+Geri bildirim (gösterilemedi): İş teklifi iletildi. Yanıtı "İşlerim" sekmesinden takip edebilirsiniz.
+00:24 +32: Makine formu yayınla, sahibi menüsü ve müsaitlik
+Geri bildirim (gösterilemedi): Makineniz yayında
+00:25 +33: Malzeme formu öneri, stok ve nakliye
+Geri bildirim (gösterilemedi): Ürününüz yayında
+00:26 +34: Personel ilanı ve sicil kartı yayınlama
+Geri bildirim (gösterilemedi): İlanınız yayında
+Geri bildirim (gösterilemedi): Sicil kartınız yayında
+00:27 +35: Anlaşma ödeme, sorun ve tamamlama düğmeleri
+Geri bildirim (gösterilemedi): Sorun karşı tarafa bildirildi
+Geri bildirim (gösterilemedi): Sorun çözüldü olarak işaretlendi
+Geri bildirim (gösterilemedi): Anlaşma tamamlandı
+00:28 +36: (tearDownAll)
+00:28 +36: All tests passed!

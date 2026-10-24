@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="SantiyeAgi.Api.Tests/SantiyeAgi.Api.Tests.csproj" />
+  <Project Path="SantiyeAgi.Api/SantiyeAgi.Api.csproj" />
+</Solution>

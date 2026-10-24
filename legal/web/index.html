@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="tr" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Şantiye Ağı – Yük, İş Makinesi, Malzeme ve Operatör İlanları</title>
+<meta name="description" content="Yük ilanları, boş dönüş yükü, iş makinesi kiralama, beton-agrega-asfalt fiyat karşılaştırma ve operatör ilanları tek uygulamada. Ücretsiz, komisyonsuz, 81 ilde.">
+<meta name="keywords" content="şantiye uygulaması, yük ilanı, boş dönüş yükü, tır yükü bul, nakliye ilanları, iş makinesi kiralama, ekskavatör kiralama, silindir kiralama, greyder kiralama, hazır beton fiyatları, agrega fiyatı, stabilize, asfalt fiyatı, operatör iş ilanı, hafriyat planlama, hafriyat döküm, müteahhit uygulaması, inşaat lojistik">
+<meta name="author" content="Yusuf Taşkıran">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="googlebot" content="index, follow">
+<link rel="canonical" href="https://yusuftaskiran753-dot.github.io/santiye-agi/">
+<link rel="alternate" hreflang="tr" href="https://yusuftaskiran753-dot.github.io/santiye-agi/">
+<link rel="alternate" hreflang="x-default" href="https://yusuftaskiran753-dot.github.io/santiye-agi/">
+<meta name="theme-color" content="#D35400">
+<meta name="color-scheme" content="light dark">
+<meta name="application-name" content="Şantiye Ağı">
+<meta name="apple-mobile-web-app-title" content="Şantiye Ağı">
+<meta name="format-detection" content="telephone=no">
+<meta name="geo.region" content="TR">
+<meta name="geo.placename" content="Türkiye">
+
+<!-- Open Graph (WhatsApp, Facebook, LinkedIn paylaşım önizlemesi) -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="Şantiye Ağı">
+<meta property="og:title" content="Şantiye Ağı – Yük, Makine, Malzeme ve Operatör Tek Uygulamada">
+<meta property="og:description" content="Boş dönmeyin, makinenizi boş bekletmeyin. Yük, iş makinesi, malzeme ve personel ilanları; aracısız ve komisyonsuz.">
+<meta property="og:url" content="https://yusuftaskiran753-dot.github.io/santiye-agi/">
+<meta property="og:image" content="https://yusuftaskiran753-dot.github.io/santiye-agi/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Şantiye Ağı uygulaması: yük, iş makinesi, malzeme ve operatör ilanları">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Şantiye Ağı – Yük, Makine, Malzeme ve Operatör Tek Uygulamada">
+<meta name="twitter:description" content="Yük ilanları, boş dönüş eşleştirme, iş makinesi kiralama, malzeme fiyat karşılaştırma ve operatör ilanları. Aracısız, komisyonsuz.">
+<meta name="twitter:image" content="https://yusuftaskiran753-dot.github.io/santiye-agi/og-image.png">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' rx='112' fill='%23D35400'/><g fill='none' stroke='%23FFF1E6' stroke-width='18' stroke-linecap='round' opacity='.55'><path d='M118 150 256 104 394 150'/></g><circle cx='118' cy='150' r='26' fill='%23FFF1E6'/><circle cx='256' cy='104' r='26' fill='%23FFF1E6'/><circle cx='394' cy='150' r='26' fill='%23FFF1E6'/><path d='M136 330c0-72 50-128 120-132 70 4 120 60 120 132z' fill='%23fff'/><path d='M228 200h56v130h-56z' fill='%23F07A2B'/><rect x='96' y='326' width='320' height='48' rx='24' fill='%23fff'/><rect x='96' y='398' width='320' height='22' rx='11' fill='%2316202A' opacity='.85'/></svg>" type="image/svg+xml">
+
+<style>
+/* Şantiye Ağı — site stilleri */
+:root{
+  --brand:#D35400;--brand-2:#F07A2B;--brand-soft:#FFF1E6;
+  --ink:#16202A;--ink-2:#3A4754;--muted:#6B7684;
+  --bg:#FFFFFF;--bg-2:#F6F4F1;--line:#E6E1DA;
+  --green:#1E8E3E;--radius:16px;--max:1120px;
+  --shadow:0 1px 2px rgba(22,32,42,.06),0 8px 24px rgba(22,32,42,.06);
+}
+@media (prefers-color-scheme:dark){
+  :root{--ink:#F2EEE9;--ink-2:#C9C3BB;--muted:#9AA3AD;--bg:#12171D;--bg-2:#1A2129;--line:#2A333D;--brand-soft:#2A1C12;--shadow:none}
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;font-size:17px}
+img,svg{max-width:100%;display:block}
+a{color:var(--brand)}
+a:hover{color:var(--brand-2)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+.skip{position:absolute;left:-999px;top:0;background:var(--brand);color:#fff;padding:8px 14px;z-index:99}
+.skip:focus{left:8px;top:8px}
+
+/* Üst menü */
+.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;color:var(--ink);text-decoration:none;letter-spacing:-.01em}
+.logo img{width:34px;height:34px;border-radius:9px}
+.nav{display:flex;gap:22px;align-items:center}
+.nav a{color:var(--ink-2);text-decoration:none;font-size:15px;font-weight:500}
+.nav a:hover{color:var(--brand)}
+.nav .btn{color:#fff}
+@media (max-width:820px){.nav a:not(.btn){display:none}}
+
+/* Butonlar */
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--brand);color:#fff;text-decoration:none;font-weight:700;padding:12px 20px;border-radius:12px;border:0;font-size:16px;line-height:1.2}
+.btn:hover{background:var(--brand-2);color:#fff}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn.ghost:hover{border-color:var(--brand);color:var(--brand)}
+.btn.sm{padding:9px 14px;font-size:14px;border-radius:10px}
+
+/* Giriş bölümü */
+.hero{padding:72px 0 56px;background:radial-gradient(900px 400px at 85% -10%,var(--brand-soft),transparent 70%)}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.eyebrow{display:inline-block;background:var(--brand-soft);color:var(--brand);font-weight:700;font-size:13px;letter-spacing:.04em;text-transform:uppercase;padding:6px 12px;border-radius:99px}
+h1{font-size:clamp(34px,5.4vw,56px);line-height:1.08;letter-spacing:-.025em;margin:18px 0 18px}
+h1 em{font-style:normal;color:var(--brand)}
+.lead{font-size:19px;color:var(--ink-2);max-width:40em;margin:0 0 28px}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.trust{display:flex;flex-wrap:wrap;gap:8px 20px;margin:26px 0 0;padding:0;list-style:none;color:var(--muted);font-size:15px}
+.trust li::before{content:"✓ ";color:var(--green);font-weight:800}
+@media (max-width:880px){.hero{padding:44px 0 36px}.hero .wrap{grid-template-columns:1fr;gap:32px}}
+
+/* Telefon maketi */
+.phone{justify-self:center;width:min(300px,100%);aspect-ratio:9/18.5;border-radius:38px;background:#0E1318;padding:12px;box-shadow:0 30px 60px -20px rgba(211,84,0,.35),0 10px 30px rgba(0,0,0,.18)}
+.screen{height:100%;border-radius:28px;background:#F6F4F1;overflow:hidden;color:#16202A;font-size:12px;display:flex;flex-direction:column}
+.scr-head{background:#D35400;color:#fff;padding:22px 14px 14px}
+.scr-head b{display:block;font-size:15px}
+.scr-search{margin-top:10px;background:#fff;color:#6B7684;border-radius:10px;padding:8px 10px}
+.scr-cats{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:12px}
+.scr-cats span{background:#fff;border-radius:10px;padding:8px 2px;text-align:center;font-weight:600;font-size:10.5px}
+.scr-cats span i{display:block;font-style:normal;font-size:17px}
+.scr-card{background:#fff;margin:0 12px 8px;border-radius:12px;padding:10px 12px;border:1px solid #ECE7E0}
+.scr-card b{display:block;font-size:12.5px}
+.scr-card small{color:#6B7684}
+.scr-card .tag{float:right;background:#E8F5EC;color:#1E8E3E;border-radius:6px;padding:1px 6px;font-weight:700;font-size:10px}
+
+/* Bölümler */
+section{padding:72px 0}
+section.alt{background:var(--bg-2)}
+.sec-head{max-width:720px;margin:0 0 40px}
+h2{font-size:clamp(27px,3.6vw,38px);line-height:1.15;letter-spacing:-.02em;margin:0 0 12px}
+h3{font-size:19px;line-height:1.3;margin:0 0 8px}
+.sec-head p{color:var(--ink-2);margin:0;font-size:18px}
+@media (max-width:640px){section{padding:52px 0}}
+
+.grid{display:grid;gap:18px}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g2{grid-template-columns:repeat(2,1fr)}
+@media (max-width:900px){.g3{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:620px){.g3,.g2{grid-template-columns:1fr}}
+
+.card{background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow)}
+section.alt .card{background:var(--bg)}
+.card p{margin:0;color:var(--ink-2);font-size:16px}
+.card ul{margin:10px 0 0;padding-left:18px;color:var(--ink-2);font-size:15.5px}
+.ico{width:46px;height:46px;border-radius:12px;background:var(--brand-soft);color:var(--brand);display:grid;place-items:center;margin-bottom:14px}
+.ico svg{width:24px;height:24px}
+
+.roles{display:flex;flex-wrap:wrap;gap:10px;margin:0;padding:0;list-style:none}
+.roles li{background:var(--bg);border:1px solid var(--line);border-radius:99px;padding:9px 16px;font-weight:600;font-size:15px}
+
+/* Adımlar */
+.steps{counter-reset:s;list-style:none;margin:0;padding:0}
+.steps li{position:relative;padding:0 0 0 64px;min-height:48px}
+.steps li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:0;width:44px;height:44px;border-radius:50%;background:var(--brand);color:#fff;font-weight:800;display:grid;place-items:center;font-size:18px}
+.steps p{margin:0;color:var(--ink-2)}
+
+/* Fiyat */
+.plan{position:relative}
+.plan.pro{border:2px solid var(--brand)}
+.plan .badge{position:absolute;top:-12px;right:20px;background:var(--brand);color:#fff;font-size:12px;font-weight:800;padding:4px 10px;border-radius:99px}
+.price{font-size:30px;font-weight:800;margin:6px 0 4px;letter-spacing:-.02em}
+.price small{font-size:15px;font-weight:600;color:var(--muted)}
+.note{color:var(--muted);font-size:14px;margin-top:16px}
+
+/* SSS */
+.faq details{border-bottom:1px solid var(--line);padding:18px 0}
+.faq summary{cursor:pointer;font-weight:700;font-size:18px;list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--brand);font-size:24px;line-height:1;flex:none}
+.faq details[open] summary::after{content:"–"}
+.faq details p{margin:10px 0 0;color:var(--ink-2)}
+
+/* İndir */
+.download{background:var(--ink);color:#fff;border-radius:24px;padding:44px;display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center}
+.download h2{color:#fff}
+.download p{color:#C9D1D9;margin:0}
+.stores{display:flex;flex-wrap:wrap;gap:12px}
+.store{display:flex;align-items:center;gap:10px;background:#fff;color:#16202A;text-decoration:none;border-radius:12px;padding:10px 16px;min-width:190px}
+.store small{display:block;font-size:11px;color:#6B7684;line-height:1.1}
+.store b{display:block;font-size:16px;line-height:1.2}
+.store svg{width:26px;height:26px}
+@media (prefers-color-scheme:dark){.download{background:#1E2732}}
+@media (max-width:760px){.download{grid-template-columns:1fr;padding:30px 22px}}
+
+/* Alt bilgi */
+footer{border-top:1px solid var(--line);padding:36px 0 44px;color:var(--muted);font-size:15px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px}
+footer nav{display:flex;flex-wrap:wrap;gap:8px 20px}
+footer a{color:var(--ink-2);text-decoration:none}
+footer a:hover{color:var(--brand)}
+
+/* Yasal sayfalar */
+.doc{max-width:780px;margin:0 auto;padding:44px 20px 72px}
+.doc h1{font-size:clamp(30px,4.5vw,42px);margin:8px 0 6px}
+.doc .meta{color:var(--muted);font-size:15px;margin:0 0 28px}
+.doc h2{font-size:24px;margin:38px 0 10px}
+.doc p,.doc li{color:var(--ink-2)}
+.doc table{width:100%;border-collapse:collapse;margin:14px 0;font-size:15px;display:block;overflow-x:auto}
+.doc th,.doc td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+.doc th{background:var(--bg-2)}
+.crumbs{font-size:14px;color:var(--muted)}
+.crumbs a{color:var(--muted)}
+.box{background:var(--brand-soft);border-radius:14px;padding:18px 20px;margin:18px 0}
+.box p{margin:0}
+
+/* Tek dosya: yasal bölümler yalnızca linkle açılır */
+.legal{display:none}
+.legal:target{display:block}
+main:has(.legal:target)>section:not(.legal){display:none}
+.legal .back{display:inline-block;margin-bottom:14px;font-weight:600;text-decoration:none}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://yusuftaskiran753-dot.github.io/#yusuf",
+      "name": "Yusuf Taşkıran",
+      "email": "mailto:yusuftaskiran753@gmail.com",
+      "address": {"@type": "PostalAddress", "addressLocality": "Sivas", "addressCountry": "TR"},
+      "url": "https://yusuftaskiran753-dot.github.io/"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://yusuftaskiran753-dot.github.io/#website",
+      "url": "https://yusuftaskiran753-dot.github.io/",
+      "name": "Yusuf Taşkıran Uygulamaları",
+      "inLanguage": "tr-TR",
+      "publisher": {"@id": "https://yusuftaskiran753-dot.github.io/#yusuf"}
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://yusuftaskiran753-dot.github.io/santiye-agi/#webpage",
+      "url": "https://yusuftaskiran753-dot.github.io/santiye-agi/",
+      "name": "Şantiye Ağı – Yük, İş Makinesi, Malzeme ve Operatör İlanları Uygulaması",
+      "description": "Tır ve kamyon yük ilanları, boş dönüş yükü, iş makinesi kiralama, malzeme fiyat karşılaştırma ve operatör iş ilanlarını tek uygulamada buluşturan şantiye ve lojistik platformu.",
+      "inLanguage": "tr-TR",
+      "isPartOf": {"@id": "https://yusuftaskiran753-dot.github.io/#website"},
+      "about": {"@id": "https://yusuftaskiran753-dot.github.io/santiye-agi/#app"},
+      "primaryImageOfPage": "https://yusuftaskiran753-dot.github.io/santiye-agi/og-image.png",
+      "breadcrumb": {"@id": "https://yusuftaskiran753-dot.github.io/santiye-agi/#breadcrumb"},
+      "dateModified": "2026-10-18"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://yusuftaskiran753-dot.github.io/santiye-agi/#breadcrumb",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Ana Sayfa", "item": "https://yusuftaskiran753-dot.github.io/"},
+        {"@type": "ListItem", "position": 2, "name": "Şantiye Ağı", "item": "https://yusuftaskiran753-dot.github.io/santiye-agi/"}
+      ]
+    },
+    {
+      "@type": "MobileApplication",
+      "@id": "https://yusuftaskiran753-dot.github.io/santiye-agi/#app",
+      "name": "Şantiye Ağı",
+      "alternateName": ["Santiye Agi", "Şantiye Ağı Uygulaması"],
+      "url": "https://yusuftaskiran753-dot.github.io/santiye-agi/",
+      "description": "Şantiye ve lojistik işleri için ilan ve buluşma uygulaması. Yük, iş makinesi, malzeme (hazır beton, agrega, stabilize, asfalt) ve operatör/personel ilanları; boş dönüş yükü eşleştirme, malzeme fiyat karşılaştırma, dijital anlaşma kaydı ve hafriyat planlama. Taraflar ödemeyi birbirine doğrudan yapar; uygulama komisyon almaz.",
+      "applicationCategory": "BusinessApplication",
+      "applicationSubCategory": "İnşaat ve Lojistik",
+      "operatingSystem": "Android, iOS",
+      "softwareVersion": "2.1.1",
+      "inLanguage": "tr-TR",
+      "countriesSupported": "TR",
+      "image": "https://yusuftaskiran753-dot.github.io/santiye-agi/icon-512.png",
+      "screenshot": "https://yusuftaskiran753-dot.github.io/santiye-agi/og-image.png",
+      "author": {"@id": "https://yusuftaskiran753-dot.github.io/#yusuf"},
+      "publisher": {"@id": "https://yusuftaskiran753-dot.github.io/#yusuf"},
+      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "TRY", "category": "free"},
+      "featureList": [
+        "Tır, kamyon, lowbed, damperli ve frigorifik araçlar için yük ilanları",
+        "Boş dönüş yükü eşleştirme ve uygunluk puanı",
+        "Ekskavatör, silindir, greyder, finişer, loder, dozer ve vinç kiralama ilanları",
+        "Hazır beton, agrega, stabilize ve asfalt fiyat karşılaştırma, teslim dahil tahmini fiyat",
+        "Operatör ve şoför iş ilanları, sicil kartı",
+        "Teklif, talep ve dijital anlaşma kaydı; ödeme planı takibi",
+        "Yalnızca tamamlanan işten sonra verilen puanlar",
+        "Hafriyat planlama: en düşük maliyetli kazı-döküm dağıtımı",
+        "İnternetsiz (çevrimdışı) çalışma",
+        "Türkiye'nin 81 ili"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://yusuftaskiran753-dot.github.io/santiye-agi/#faq",
+      "mainEntity": [
+        {"@type": "Question", "name": "Şantiye Ağı nedir?", "acceptedAnswer": {"@type": "Answer", "text": "Şantiye Ağı; yük, iş makinesi, inşaat malzemesi ve operatör/personel ilanlarını tek yerde toplayan bir mobil uygulamadır. Nakliyeciler, yük sahipleri, makine sahipleri, müteahhitler, malzeme tedarikçileri ve operatörler uygulamada buluşur, teklifleşir ve yaptıkları işi dijital olarak kayıt altına alır."}},
+        {"@type": "Question", "name": "Şantiye Ağı ücretsiz mi?", "acceptedAnswer": {"@type": "Answer", "text": "Evet. İlanlara göz atmak, aramak, filtrelemek ve ilan vermek ücretsizdir. Ücretsiz üyelikte ayda 5 iletişim/teklif hakkı ve aynı anda 5 yayında ilan bulunur. Sınırsız kullanım için isteğe bağlı Premium abonelik veya kredi paketi alınabilir."}},
+        {"@type": "Question", "name": "Uygulama komisyon alıyor mu?", "acceptedAnswer": {"@type": "Answer", "text": "Hayır. Navlun, kira veya malzeme bedeli taraflar arasında doğrudan ödenir. Şantiye Ağı paraya dokunmaz ve işten komisyon almaz."}},
+        {"@type": "Question", "name": "Boş dönüş yükü nasıl bulunur?", "acceptedAnswer": {"@type": "Answer", "text": "Yük bölümündeki boş dönüş eşleştirme aracına boşaldığınız ili ve dönmek istediğiniz ili yazın. Uygulama güzergâhınıza uyan yükleri uygunluk puanıyla sıralar."}},
+        {"@type": "Question", "name": "Hangi iş makineleri kiralanabilir?", "acceptedAnswer": {"@type": "Answer", "text": "Ekskavatör, silindir, greyder, finişer, loder, beko loder, dozer, mobil vinç ve kamyon/damper ilanları bulunur. Operatörlü veya operatörsüz, saatlik veya günlük fiyatla; liste veya harita üzerinden en yakın, en ucuz ya da en yüksek puanlı makine seçilebilir."}},
+        {"@type": "Question", "name": "Malzeme fiyatlarını nasıl karşılaştırırım?", "acceptedAnswer": {"@type": "Answer", "text": "Malzeme bölümünde hazır beton, agrega, stabilize ve asfalt tedarikçilerini ürün bazında karşılaştırabilirsiniz. Uygulama mesafeye göre teslim dahil tahmini fiyatı hesaplar ve en avantajlı teklifi işaretler."}},
+        {"@type": "Question", "name": "Telefon numaram herkese açık mı?", "acceptedAnswer": {"@type": "Answer", "text": "Hayır. Telefon numaranız yalnızca ilanınız için iletişim hakkı açan veya sizinle anlaşma kaydı bulunan kullanıcılara gösterilir."}},
+        {"@type": "Question", "name": "Şantiyede internet yokken çalışır mı?", "acceptedAnswer": {"@type": "Answer", "text": "Evet. Uygulama son verilerle internetsiz açılır. İnternet yokken yapılan ilan, teklif ve anlaşma işlemleri cihazda sıraya alınır ve bağlantı gelince otomatik gönderilir."}},
+        {"@type": "Question", "name": "Hafriyat planlama aracı ne yapar?", "acceptedAnswer": {"@type": "Answer", "text": "Kazı, döküm ve ocak noktalarını haritaya eklersiniz. Araç, döküm kapasitelerini aşmadan en düşük maliyetli dağıtımı hesaplar; sefer sayısı, yakıt, gün ve döküm ücretini çıkarır, dönüş yükü önerir. Premium üyelikte kullanılır."}},
+        {"@type": "Question", "name": "Hesabımı nasıl silerim?", "acceptedAnswer": {"@type": "Answer", "text": "Uygulamada Profil → Hesabımı sil adımıyla hesabınızı hemen silebilirsiniz. Uygulamaya erişiminiz yoksa yusuftaskiran753@gmail.com adresine 'Hesap silme talebi' konulu e-posta gönderin."}}
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#icerik">İçeriğe geç</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="./" aria-label="Şantiye Ağı ana sayfa">
+      <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' rx='112' fill='%23D35400'/><g fill='none' stroke='%23FFF1E6' stroke-width='18' stroke-linecap='round' opacity='.55'><path d='M118 150 256 104 394 150'/></g><circle cx='118' cy='150' r='26' fill='%23FFF1E6'/><circle cx='256' cy='104' r='26' fill='%23FFF1E6'/><circle cx='394' cy='150' r='26' fill='%23FFF1E6'/><path d='M136 330c0-72 50-128 120-132 70 4 120 60 120 132z' fill='%23fff'/><path d='M228 200h56v130h-56z' fill='%23F07A2B'/><rect x='96' y='326' width='320' height='48' rx='24' fill='%23fff'/><rect x='96' y='398' width='320' height='22' rx='11' fill='%2316202A' opacity='.85'/></svg>" alt="" width="34" height="34">Şantiye Ağı
+    </a>
+    <nav class="nav" aria-label="Ana menü">
+      <a href="#ozellikler">Özellikler</a>
+      <a href="#nasil-calisir">Nasıl çalışır</a>
+      <a href="#fiyat">Fiyat</a>
+      <a href="#sss">SSS</a>
+      <a class="btn sm" href="#indir">Uygulamayı indir</a>
+    </nav>
+  </div>
+</header>
+
+<main id="icerik">
+
+<!-- GİRİŞ -->
+<section class="hero" aria-labelledby="baslik">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">İnşaat · Lojistik · İş Makinesi</span>
+      <h1 id="baslik">Yük, makine, malzeme ve operatör <em>tek uygulamada</em></h1>
+      <p class="lead">Şantiye Ağı; nakliyeciyi yük sahibiyle, makine sahibini müteahhitle, tedarikçiyi şantiyeyle ve operatörü işverenle buluşturur. Boş dönmeyin, makinenizi boş bekletmeyin, malzemeyi en uygun fiyata alın. <strong>Aracısız ve komisyonsuz.</strong></p>
+      <div class="cta">
+        <a class="btn" href="#indir">Ücretsiz indir</a>
+        <a class="btn ghost" href="#ozellikler">Neler yapabilirim?</a>
+      </div>
+      <ul class="trust">
+        <li>Türkiye'nin 81 ili</li>
+        <li>Komisyon yok</li>
+        <li>İnternetsiz çalışır</li>
+        <li>Numaranız gizli</li>
+      </ul>
+    </div>
+    <div class="phone" role="img" aria-label="Şantiye Ağı uygulamasının ana ekranı: arama kutusu, yük, makine, malzeme ve personel kategorileri, örnek ilanlar">
+      <div class="screen" aria-hidden="true">
+        <div class="scr-head"><b>Günaydın, Mehmet Usta</b>Bugün ne arıyorsunuz?<div class="scr-search">Yük, makine, malzeme ara…</div></div>
+        <div class="scr-cats"><span><i>🚛</i>Yük</span><span><i>🚜</i>Makine</span><span><i>🧱</i>Malzeme</span><span><i>👷</i>Personel</span></div>
+        <div class="scr-card"><span class="tag">Dönüş yükü</span><b>Ankara → Kayseri</b><small>Lowbed · 28 ton · yarın</small></div>
+        <div class="scr-card"><span class="tag">Müsait</span><b>Silindir · 11 ton</b><small>Operatörlü · günlük fiyat</small></div>
+        <div class="scr-card"><span class="tag">En avantajlı</span><b>Hazır beton C30</b><small>Teslim dahil tahmini fiyat</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KİMLER İÇİN -->
+<section class="alt" aria-labelledby="kimler">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="kimler">Kimler için?</h2>
+      <p>Sahada iş yapan herkes için. Rolünüzü seçin, uygulama size uygun ilanları ve önerileri öne çıkarsın.</p>
+    </div>
+    <ul class="roles">
+      <li>Nakliyeci / Tırcı</li>
+      <li>Yük sahibi</li>
+      <li>İş makinesi sahibi</li>
+      <li>Müteahhit / Şantiye şefi</li>
+      <li>Malzeme tedarikçisi</li>
+      <li>Operatör / Şoför / Personel</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ÖZELLİKLER -->
+<section id="ozellikler" aria-labelledby="ozellik-baslik">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="ozellik-baslik">Şantiye Ağı ile neler yapabilirsiniz?</h2>
+      <p>Dört ilan türü, akıllı eşleştirme ve işinizi kayıt altına alan araçlar.</p>
+    </div>
+    <div class="grid g3">
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 6h13v10H1zM14 10h4l4 4v2h-8"/><circle cx="5.5" cy="18" r="2"/><circle cx="17.5" cy="18" r="2"/></svg></div>
+        <h3>Yük ilanları ve boş dönüş</h3>
+        <p>Tır, kamyon, lowbed, damperli, kırkayak ve frigorifik araçlar için yük bulun. Boşaldığınız ilden evinize giden yükler uygunluk puanıyla sıralanır.</p>
+        <ul><li>Nereden / nereye, araç tipi filtresi</li><li>Navlun ve km başı fiyata göre sıralama</li></ul>
+      </article>
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17h11v-5H7l-2 3H3z"/><path d="M14 14l5-7 2 1-3 6"/><circle cx="6" cy="19" r="2"/><circle cx="12" cy="19" r="2"/></svg></div>
+        <h3>İş makinesi kiralama</h3>
+        <p>Ekskavatör, silindir, greyder, finişer, loder, beko loder, dozer ve mobil vinç. Operatörlü ya da operatörsüz, saatlik veya günlük.</p>
+        <ul><li>Liste ve harita görünümü</li><li>En yakın, en ucuz, en yüksek puan</li></ul>
+      </article>
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V9l7-5 7 5v12"/><path d="M9 21v-6h6v6"/></svg></div>
+        <h3>Malzeme fiyat karşılaştırma</h3>
+        <p>Hazır beton, agrega, stabilize ve asfalt tedarikçilerini ürün bazında karşılaştırın. Mesafeye göre <strong>teslim dahil tahmini fiyat</strong> ve "en avantajlı" işareti.</p>
+      </article>
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="7" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg></div>
+        <h3>Operatör ve personel ilanları</h3>
+        <p>Ekskavatör, silindir, greyder, finişer, vinç operatörü; tır şoförü, ustabaşı ve saha işçisi ilanları. Operatörler için sicil kartı.</p>
+      </article>
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 14l2.5 2.5L16 11"/></svg></div>
+        <h3>Teklif ve dijital anlaşma kaydı</h3>
+        <p>Teklif gönderin, kabul edin; anlaşma otomatik kayda dönüşür. Onay → iş tamamlandı → teslim alındı → puan. Ödeme planını "ödedim / tahsil ettim" diye işaretleyin, özeti WhatsApp'tan paylaşın.</p>
+      </article>
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 20l-6-3V4l6 3 6-3 6 3v13l-6-3-6 3z"/><path d="M9 7v13M15 4v13"/></svg></div>
+        <h3>Hafriyat planlama</h3>
+        <p>Kazı, döküm ve ocak noktalarını haritaya ekleyin. Döküm kapasitesini aşmadan <strong>en düşük maliyetli</strong> dağıtım; sefer, yakıt, gün ve döküm ücreti hesabı.</p>
+      </article>
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h.01M8.5 16.5a5 5 0 0 1 7 0M5 13a10 10 0 0 1 5.2-2.8M19 13a10 10 0 0 0-2-1.6M2 8.8a15 15 0 0 1 4.2-2.6M22 8.8A15 15 0 0 0 11 5M2 2l20 20"/></svg></div>
+        <h3>Çekim yokken de çalışır</h3>
+        <p>Şantiyede internet yoksa uygulama son verilerle açılır. Yaptığınız işlemler kaybolmaz, bağlantı gelince sırayla gönderilir.</p>
+      </article>
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>Güvenli ticaret</h3>
+        <p>Telefon numaranız gizli kalır. Puanlar yalnızca tamamlanan işten sonra verilir. Şikâyet, engelleme, onaylı firma rozeti ve uygunsuz içerik süzgeci.</p>
+      </article>
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"/></svg></div>
+        <h3>Anında bildirim</h3>
+        <p>Yeni teklif, kabul/ret, anlaşma adımları ve puanlar anında telefonunuza gelir. Yanıt bekleyen işler ana sayfada.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- NASIL ÇALIŞIR -->
+<section id="nasil-calisir" class="alt" aria-labelledby="nasil-baslik">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="nasil-baslik">Nasıl çalışır?</h2>
+      <p>Üç adımda işinizi bulun, anlaşın ve kayıt altına alın.</p>
+    </div>
+    <ol class="steps grid g3">
+      <li><h3>Profilinizi açın</h3><p>Adınızı, rolünüzü ve ilinizi girin. Kayıt bir dakika sürer.</p></li>
+      <li><h3>İlan verin veya ilan bulun</h3><p>Yük, makine, malzeme ya da personel. Arayın, filtreleyin, haritada görün.</p></li>
+      <li><h3>Teklifleşin, anlaşın</h3><p>Arayın veya WhatsApp'tan yazın. Kabul edilen teklif anlaşma kaydına dönüşür; ödemeyi doğrudan birbirinize yaparsınız.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- FİYAT -->
+<section id="fiyat" aria-labelledby="fiyat-baslik">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="fiyat-baslik">Fiyatlandırma</h2>
+      <p>Uygulama ücretsizdir. İşten komisyon alınmaz. Daha fazlasına ihtiyacınız olursa Premium'a geçin.</p>
+    </div>
+    <div class="grid g3">
+      <div class="card plan">
+        <h3>Ücretsiz</h3>
+        <div class="price">₺0</div>
+        <ul>
+          <li>İlanlara göz atma, arama, filtre</li>
+          <li>Ayda 5 iletişim / teklif hakkı</li>
+          <li>Aynı anda 5 yayında ilan</li>
+          <li>Anlaşma kaydı ve puanlama</li>
+        </ul>
+      </div>
+      <div class="card plan pro">
+        <span class="badge">Önerilen</span>
+        <h3>Premium</h3>
+        <div class="price">Aylık / Yıllık</div>
+        <ul>
+          <li>Sınırsız iletişim ve teklif</li>
+          <li>Sınırsız yayında ilan</li>
+          <li>Hafriyat planlama aracı</li>
+          <li>Premium rozeti</li>
+        </ul>
+      </div>
+      <div class="card plan">
+        <h3>Kredi paketleri</h3>
+        <div class="price">5 · 15 · 40 <small>kredi</small></div>
+        <ul>
+          <li>Hak bitince 1 kredi = 1 iletişim hakkı</li>
+          <li>İlanı öne çıkarma: 24 saat = 1 kredi</li>
+          <li>7 gün öne çıkarma = 5 kredi</li>
+        </ul>
+      </div>
+    </div>
+    <p class="note">Premium ve kredi yalnızca Google Play ve App Store üzerinden satılır; güncel fiyat mağazada gösterilir. Navlun, kira ve malzeme bedelleri taraflar arasında doğrudan ödenir.</p>
+  </div>
+</section>
+
+<!-- SSS -->
+<section id="sss" class="alt" aria-labelledby="sss-baslik">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="sss-baslik">Sık sorulan sorular</h2>
+    </div>
+    <div class="faq">
+      <details open><summary>Şantiye Ağı nedir?</summary><p>Şantiye Ağı; yük, iş makinesi, inşaat malzemesi ve operatör/personel ilanlarını tek yerde toplayan bir mobil uygulamadır. Nakliyeciler, yük sahipleri, makine sahipleri, müteahhitler, malzeme tedarikçileri ve operatörler uygulamada buluşur, teklifleşir ve yaptıkları işi dijital olarak kayıt altına alır.</p></details>
+      <details><summary>Şantiye Ağı ücretsiz mi?</summary><p>Evet. İlanlara göz atmak, aramak, filtrelemek ve ilan vermek ücretsizdir. Ücretsiz üyelikte ayda 5 iletişim/teklif hakkı ve aynı anda 5 yayında ilan bulunur. Sınırsız kullanım için isteğe bağlı Premium abonelik veya kredi paketi alınabilir.</p></details>
+      <details><summary>Uygulama komisyon alıyor mu?</summary><p>Hayır. Navlun, kira veya malzeme bedeli taraflar arasında doğrudan ödenir. Şantiye Ağı paraya dokunmaz ve işten komisyon almaz.</p></details>
+      <details><summary>Boş dönüş yükü nasıl bulunur?</summary><p>Yük bölümündeki boş dönüş eşleştirme aracına boşaldığınız ili ve dönmek istediğiniz ili yazın. Uygulama güzergâhınıza uyan yükleri uygunluk puanıyla sıralar.</p></details>
+      <details><summary>Hangi iş makineleri kiralanabilir?</summary><p>Ekskavatör, silindir, greyder, finişer, loder, beko loder, dozer, mobil vinç ve kamyon/damper ilanları bulunur. Operatörlü veya operatörsüz, saatlik veya günlük fiyatla; liste veya harita üzerinden en yakın, en ucuz ya da en yüksek puanlı makine seçilebilir.</p></details>
+      <details><summary>Malzeme fiyatlarını nasıl karşılaştırırım?</summary><p>Malzeme bölümünde hazır beton, agrega, stabilize ve asfalt tedarikçilerini ürün bazında karşılaştırabilirsiniz. Uygulama mesafeye göre teslim dahil tahmini fiyatı hesaplar ve en avantajlı teklifi işaretler.</p></details>
+      <details><summary>Telefon numaram herkese açık mı?</summary><p>Hayır. Telefon numaranız yalnızca ilanınız için iletişim hakkı açan veya sizinle anlaşma kaydı bulunan kullanıcılara gösterilir.</p></details>
+      <details><summary>Şantiyede internet yokken çalışır mı?</summary><p>Evet. Uygulama son verilerle internetsiz açılır. İnternet yokken yapılan ilan, teklif ve anlaşma işlemleri cihazda sıraya alınır ve bağlantı gelince otomatik gönderilir.</p></details>
+      <details><summary>Hafriyat planlama aracı ne yapar?</summary><p>Kazı, döküm ve ocak noktalarını haritaya eklersiniz. Araç, döküm kapasitelerini aşmadan en düşük maliyetli dağıtımı hesaplar; sefer sayısı, yakıt, gün ve döküm ücretini çıkarır, dönüş yükü önerir. Premium üyelikte kullanılır.</p></details>
+      <details><summary>Hesabımı nasıl silerim?</summary><p>Uygulamada <strong>Profil → Hesabımı sil</strong> adımıyla hesabınızı hemen silebilirsiniz. Uygulamaya erişiminiz yoksa <a href="#hesap-silme">hesap silme sayfasındaki</a> adımları izleyin.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- İNDİR -->
+<section id="indir" aria-labelledby="indir-baslik">
+  <div class="wrap">
+    <div class="download">
+      <div>
+        <h2 id="indir-baslik">Şantiye Ağı'nı indirin</h2>
+        <p>Android ve iPhone için ücretsiz. Mağaza bağlantıları yayın onayından sonra burada.</p>
+      </div>
+      <div class="stores">
+        <!-- Google Play yayınlanınca href'i değiştirin: https://play.google.com/store/apps/details?id=com.santiyeagi.santiye_agi -->
+        <a class="store" href="#indir" aria-label="Google Play'de yakında">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#34A853" d="M3.6 1.8 13.3 12l-9.7 10.2c-.4-.2-.6-.7-.6-1.2V3c0-.5.2-1 .6-1.2z"/><path fill="#FBBC04" d="m16.6 15.3-3.3-3.3 3.3-3.3 3.8 2.2c1 .6 1 1.6 0 2.2z"/><path fill="#EA4335" d="M13.3 12 3.6 22.2c.3.2.8.2 1.3-.1l11.7-6.8z"/><path fill="#4285F4" d="M16.6 8.7 4.9 1.9c-.5-.3-1-.3-1.3-.1L13.3 12z"/></svg>
+          <span><small>YAKINDA</small><b>Google Play</b></span>
+        </a>
+        <!-- App Store yayınlanınca href'i değiştirin -->
+        <a class="store" href="#indir" aria-label="App Store'da yakında">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#16202A" d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8s2 .8 3.4.8c1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9-.1 0-2.7-1-2.7-4.1zM13.9 5c.7-.9 1.2-2 1.1-3.2-1 0-2.3.7-3 1.6-.7.8-1.3 2-1.1 3.1 1.1.1 2.3-.6 3-1.5z"/></svg>
+          <span><small>YAKINDA</small><b>App Store</b></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- YASAL SAYFALAR -->
+<section id="kullanim-kosullari" class="legal doc" aria-label="Kullanım Koşulları">
+<a class="back" href="#">← Ana sayfaya dön</a>
+<h1>Şantiye Ağı Kullanım Koşulları</h1>
+<p><strong>Son güncelleme:</strong> 20.10.2026</p>
+<h2>1. Taraflar ve tanımlar</h2>
+<p>Bu Kullanım Koşulları (&quot;Koşullar&quot;), Yusuf Taşkıran (&quot;İşletici&quot;) tarafından sunulan <strong>Şantiye Ağı</strong> mobil uygulamasının (&quot;Uygulama&quot;) kullanımını düzenler. İşleticinin iletişim adresi: Merkez, Sivas / Türkiye, e-posta: yusuftaskiran753@gmail.com.</p>
+<ul><li><strong>Kullanıcı:</strong> Uygulamaya kayıt olan gerçek veya tüzel kişi.</li><li><strong>İlan:</strong> Kullanıcının yük, iş makinesi, malzeme, iş/personel ilanı veya sicil kartı olarak yayımladığı içerik.</li><li><strong>Teklif / talep:</strong> Bir kullanıcının başka bir kullanıcının ilanına gönderdiği fiyat teklifi, kiralama talebi, sipariş talebi veya iş başvurusu.</li><li><strong>Anlaşma kaydı:</strong> Tarafların kendi aralarında yaptıkları işi kayıt altına almak için Uygulamada oluşturdukları dijital not.</li><li><strong>Dijital haklar:</strong> Premium üyelik, kredi, iletişim hakkı ve ilan öne çıkarma gibi yalnızca Uygulama içinde kullanılan özellikler.</li></ul>
+<h2>2. Uygulamanın niteliği</h2>
+<p>2.1. Uygulama bir <strong>ilan ve buluşma platformudur</strong>. Kullanıcıların birbirini bulmasını, teklifleşmesini ve yaptıkları işi kayıt altına almasını sağlar.</p>
+<p>2.2. İşletici; taşıma, kiralama, satış, iş görme veya hizmet sözleşmelerinin <strong>tarafı değildir</strong>. Bu sözleşmeler yalnızca ilgili kullanıcılar arasında kurulur. İşletici, ilanlarda belirtilen mal ve hizmetin varlığını, niteliğini, yasallığını, fiyatını ve teslimini garanti etmez.</p>
+<p>2.3. İşletici <strong>ödemeye aracılık etmez</strong>, kullanıcılar adına para tahsil etmez, saklamaz ve aktarmaz. İş bedelleri taraflar arasında doğrudan (havale, nakit, çek vb.) ödenir. Anlaşma kaydındaki &quot;ödendi&quot; ve &quot;tahsil edildi&quot; işaretleri yalnızca tarafların kendi beyanıdır. Bu işaretler bir ödeme veya tahsilat belgesi değildir.</p>
+<p>2.4. Fatura, irsaliye, taşıma belgesi (ör. yetki belgesi, CMR), sigorta, iş güvenliği, SGK bildirimi ve vergi gibi her türlü yasal yükümlülük, ilgili işin taraflarına aittir.</p>
+<h2>3. Hesap</h2>
+<p>3.1. Kullanıcı, kayıt sırasında verdiği bilgilerin doğru ve güncel olduğunu kabul eder. Başkası adına veya sahte bilgiyle hesap açılamaz.</p>
+<p>3.2. Telefon numarası herkese açık profilde görünmez. Numara ilanınız için iletişim hakkı açan kullanıcıya, teklif/talebin iki tarafına ve anlaşmanın taraflarına gösterilir. Teklif/talep tarafları kabulden önce de erişebilir; ret/geri çekme tek başına erişimi kaldırmaz.</p>
+<p>3.3. Kullanıcı hesabını dilediği zaman <strong>Profil → Hesabımı sil</strong> adımıyla silebilir. Silme işlemi geri alınamaz. Karşı tarafın anlaşma kaydı kimlik bağlantısı kaldırılıp “Silinen kullanıcı” adıyla kalabilir; serbest notlar temizlenir. Ayrıntılar Gizlilik Politikası ve Hesap Silme metnindedir.</p>
+<p>3.4. 18 yaşından küçükler Uygulamayı kullanamaz.</p>
+<h2>4. Kullanıcının yükümlülükleri</h2>
+<p>Kullanıcı aşağıdaki davranışlarda bulunmayacağını kabul eder:</p>
+<ul><li>Gerçek dışı, yanıltıcı, başkasına ait veya yasa dışı mal ya da hizmet ilanı vermek</li><li>Dolandırıcılık amacıyla ön ödeme istemek veya sahte ödeme belgesi göstermek</li><li>Hakaret, tehdit, ayrımcılık veya müstehcenlik içeren içerik paylaşmak</li><li>Başkalarının kişisel verilerini izinsiz paylaşmak</li><li>Aynı ilanı tekrar tekrar yayımlamak (spam), sahte puan veya yorum vermek</li><li>Uygulamanın işleyişini bozmaya, kuralları aşmaya veya başka hesaplara erişmeye çalışmak</li></ul>
+<p>İşletici, bu kurallara aykırı içeriği bildirim almadan kaldırabilir, ilgili hesabı askıya alabilir veya kapatabilir. Birden fazla kullanıcının şikâyet ettiği ilanlar inceleme için otomatik olarak yayından kaldırılabilir.</p>
+<h2>5. Güvenli ticaret uyarısı</h2>
+<ul><li>Tanımadığınız bir kişiye işin tamamı bitmeden <strong>peşin ödeme yapmayın.</strong> Ödemeyi aşamalara bölün ve her aşamayı anlaşma kaydında işaretleyin.</li><li>Fatura ve kimlik bilgilerini, araç ruhsatını ve makinenin sahibini kontrol edin.</li><li>Şüpheli durumda ilanı veya kullanıcıyı Uygulama içinden şikâyet edin. Suç şüphesinde kolluk kuvvetlerine başvurun.</li></ul>
+<h2>6. Puan ve yorumlar</h2>
+<p>Puan yalnızca <strong>tamamlanmış</strong> bir anlaşma kaydından sonra verilebilir. Her anlaşma için her taraf yalnızca bir kez puan verebilir. İşletici, puanların doğruluğunu garanti etmez. Kurallara aykırı yorumları kaldırabilir.</p>
+<h2>7. Dijital haklar, ücretler ve iade</h2>
+<p>7.1. Uygulamayı kullanmak ücretsizdir. Ücretsiz üyelikte her ay belirli sayıda iletişim/teklif hakkı ve aynı anda yayında tutulabilecek belirli sayıda ilan bulunur. Güncel sınırlar Uygulama içinde gösterilir.</p>
+<p>7.2. <strong>Premium üyelik</strong> ve <strong>kredi</strong> paketleri yalnızca Google Play veya App Store üzerinden satın alınır. Ödeme ilgili mağazanın kurallarına tabidir ve mağaza tarafından tahsil edilir.</p>
+<p>7.3. Premium abonelik, dönem bitiminden en az 24 saat önce iptal edilmezse aynı süre ve ücretle <strong>otomatik yenilenir</strong>. Abonelik, mağaza hesap ayarlarından yönetilir ve iptal edilir.</p>
+<p>7.4. Krediler yalnızca Uygulama içinde (iletişim hakkı açma, ilan öne çıkarma) kullanılır. Nakde çevrilemez, devredilemez. Hesap silinince kullanılmamış krediler ve Premium süresi sona erer.</p>
+<p>7.5. İade talepleri, satın almanın yapıldığı mağazanın iade süreçleriyle değerlendirilir (Google Play: play.google.com, App Store: reportaproblem.apple.com). Tüketici mevzuatından doğan haklarınız saklıdır.</p>
+<p>7.6. Premium veya kredi, karşı tarafla iş yapılacağını, işin sonucunu veya ilanın doğruluğunu garanti etmez.</p>
+<h2>8. Sorumluluğun sınırlandırılması</h2>
+<p>Kanunun izin verdiği ölçüde İşletici;</p>
+<ul><li>kullanıcılar arasındaki işlerden, ödemelerden, teslimattan, gecikmeden, hasardan veya kayıplardan,</li><li>kullanıcıların paylaştığı içeriğin doğruluğundan,</li><li>mesafe, fiyat, sefer, yakıt ve dönüş yükü hesaplarının (bu hesaplar tahminidir) sonuçlarından,</li><li>internet, sunucu veya mağaza kaynaklı kesintilerden</li></ul>
+<p>sorumlu değildir. İşletici, hukuka aykırı içeriği öğrendiğinde gecikmeden kaldırır.</p>
+<h2>9. Fikrî haklar</h2>
+<p>Uygulamanın tasarımı, yazılımı ve markası İşleticiye aittir. Kullanıcı, yayımladığı içeriğin Uygulamada gösterilmesi için İşleticiye ücretsiz ve süresiz bir kullanım izni verir. Bu izin, içerik veya hesap silinince sona erer.</p>
+<h2>10. Kişisel veriler</h2>
+<p>Kişisel verilerin işlenmesi <a href="#gizlilik">Gizlilik Politikası</a> ve <a href="#kvkk">KVKK Aydınlatma Metni</a> ile açıklanmıştır.</p>
+<h2>11. Değişiklikler</h2>
+<p>İşletici bu Koşulları değiştirebilir. Önemli değişiklikler Uygulama içinde duyurulur. Değişiklikten sonra Uygulamayı kullanmaya devam etmek, yeni Koşulların kabulü anlamına gelir.</p>
+<h2>12. Uygulanacak hukuk ve uyuşmazlıklar</h2>
+<p>Bu Koşullar Türkiye Cumhuriyeti hukukuna tabidir. Tüketici sıfatına sahip kullanıcılar, parasal sınırlar dahilinde Tüketici Hakem Heyetlerine veya Tüketici Mahkemelerine başvurabilir. Diğer uyuşmazlıklarda Sivas mahkemeleri ve icra daireleri yetkilidir.</p>
+<h2>13. İletişim</h2>
+<p>Sorular ve şikâyetler için: yusuftaskiran753@gmail.com</p>
+<h2>İsteğe bağlı asistan ve canlı konum</h2>
+<p>Asistanın yorumları hatalı olabilir; kullanıcı taslağı doğrulayıp göndermedikçe ilan yayımlanmaz. Gemini’ye veri iletimi ayrı onaya bağlıdır. Ücretsiz ve ücretli sağlayıcı planlarının veri kullanım koşulları farklı olabilir; kişisel veya gizli bilgi yazılmamalıdır.</p>
+<p>Canlı konum yalnız kullanıcının başlattığı süreli paylaşım boyunca anlaşmanın diğer tarafına gösterilir. Kullanıcı paylaşımı durdurabilir. Çevrimdışı durdurma isteği sunucuya gecikmeli ulaşabilir; uygulamanın kapatılması, bağlantı ve pil kısıtları güncellemeleri durdurabilir. Mesafe/süre bilgileri yaklaşık olup kesin navigasyon veya teslim taahhüdü değildir.</p>
+</section>
+
+<section id="gizlilik" class="legal doc" aria-label="Gizlilik Politikası">
+<a class="back" href="#">← Ana sayfaya dön</a>
+<h1>Şantiye Ağı Gizlilik Politikası</h1>
+<p><strong>Son güncelleme:</strong> 20.10.2026<br><strong>Veri sorumlusu:</strong> Yusuf Taşkıran<br><strong>İletişim:</strong> Merkez, Sivas / Türkiye — yusuftaskiran753@gmail.com</p>
+<h2>1. İşlediğimiz bilgiler</h2>
+<table><tr><th>Bilgi</th><th>Amaç ve erişim</th></tr><tr><td>Ad, telefon, hesap/oturum kimliği, firma, rol, çalışılan il, sicil bilgileri</td><td>Hesap, profil ve iletişim. Telefon herkese açık değildir; ilan için iletişim hakkı açan kullanıcıya, teklif/talebin iki tarafına ve anlaşmanın taraflarına gösterilir. Teklif taraflarının erişimi kabulden önce başlayabilir; ret/geri çekme tek başına erişimi kaldırmaz.</td></tr><tr><td>İlan, teklif, anlaşma, adres, tutar, ödeme takip işaretleri, puan ve yorumlar</td><td>İlanlar/profiller/puanlar kullanıcıların erişimine, özel teklif ve anlaşmalar ilgili tarafların erişimine sunulur. İş bedeli uygulama üzerinden tahsil edilmez.</td></tr><tr><td>Kullanıcının seçtiği fotoğraflar ve açıklamalar</td><td>Profilde yapılan işler ve ilgili içerikleri paylaşmak. Galeri topluca taranmaz; yalnız seçtiğiniz içerikler yüklenir.</td></tr><tr><td>Kullanıcının girdiği il, saha/tesis/makine noktaları</td><td>İlanları ve saha kayıtlarını haritada göstermek.</td></tr><tr><td>İsteğe bağlı cihaz konumu</td><td>Canlı paylaşım açıkken son enlem/boylam, ölçüm zamanı, doğruluk ve varsa hız/yön sunucuya gider. Yalnız ilgili anlaşmanın diğer tarafı görebilir.</td></tr><tr><td>Asistana yazılan metin ve seçili il</td><td>Ayrı Gemini onayı seçilirse en fazla 400 karakterlik metin ve seçili il Google Gemini’ye gönderilir; onaysız kullanım cihazda yorumlanır.</td></tr><tr><td>Bildirim/cihaz kurulum kimliği, şikâyet/engel ve işlem kayıtları</td><td>Teklif ve iş bildirimleri, güvenlik, kötüye kullanımı önleme ve hesabın işletilmesi.</td></tr><tr><td>Mağaza işlem kimliği, ürün, hak süresi, kredi hareketleri</td><td>Satın alma doğrulaması ve hak yönetimi. Kart bilgisi alınmaz; mağaza işler.</td></tr></table>
+<p>Rehber, SMS kutusu ve mikrofon kayıtları toplanmaz. Klavyenin sesle yazma özelliği klavye sağlayıcısına aittir; uygulama ses kaydı göndermez. Reklam kimliği, reklam takibi veya reklam analitiği kullanılmaz.</p>
+<h2>2. Süreli canlı konum</h2>
+<p>Paylaşımı anlaşma ekranından siz başlatırsınız: 1 saat, 8 saat veya henüz teslim edilmemiş işte teslime kadar (en fazla 24 saat). Yaklaşık konum izniyle de kullanılabilir. İzin vermemek diğer temel özellikleri engellemez. Paylaşım sürerken uygulama arka plandayken konum ölçümleri devam edebilir; Android’de konum ön plan hizmeti/bildirimi, iOS’ta sistem konum göstergesi kullanılır. Android sürekli arka plan konum izni istenmez.</p>
+<p>Geçmiş rota oluşturulmaz; aktif sistem yalnız son ölçümü tutar. Durdurma, süre sonu, kullanıcı engelleme, işin tamamlanması/iptali, hesap silme ve sunucuda başarılı çıkış paylaşımı bitirir. Teslime kadar seçeneği teslim bildirimiyle de biter. İnternet yokken durdurma cihazdaki gönderimi hemen keser; sunucuya durdurma isteği bağlantı gelince ulaşır. Bu arada son ölçüm süre sınırına kadar karşı tarafa görünebilir. Uygulama tamamen kapatıldığında kesintisiz paylaşım garantisi yoktur. Mesafe/süre bilgisi yaklaşık tahmindir.</p>
+<h2>3. İsteğe bağlı yapay zekâ asistanı</h2>
+<p>“Gemini ile daha ayrıntılı anla” seçimi varsayılan olarak kapalıdır. Seçtiğinizde gönderdiğiniz metin ve seçili il, sunucumuz üzerinden Google Gemini’ye iletilir. Hesap kimliği, telefon, fotoğraf, GPS ölçümü veya anlaşma geçmişi otomatik olarak Gemini isteğine eklenmez; yazdığınız metne bu bilgileri kendiniz eklememelisiniz. Seçimi kaldırarak sonraki istekleri cihazda yorumlatabilirsiniz.</p>
+<p>Kendi API veritabanımıza veya uygulama günlüklerine bu istek metni ve model cevabı kaydedilmez. Google’ın saklama ve kullanım koşulları hizmet planına göre değişir: ücretsiz hizmette girdiler/çıktılar ürün geliştirme ve insan incelemesine konu olabilir; ücretli hizmette farklı veri işleme koşulları ve güvenlik amaçlı sınırlı saklama uygulanır. Daha önce sağlayıcıya iletilen bir istek, onay kutusunu kapatmakla geri alınmaz. <a href="https://ai.google.dev/gemini-api/terms">Gemini veri işleme koşulları</a>.</p>
+<p>Yanıtlar hatalı olabilir. Asistan kendiliğinden ilan yayımlamaz, anlaşma yapmaz veya ödeme başlatmaz; hazırlanan taslağı kullanıcı kontrol edip gönderir.</p>
+<h2>4. Alıcılar ve hizmet sağlayıcılar</h2>
+<p>Veriler satılmaz. Diğer kullanıcılar yalnız yukarıdaki erişim kapsamındaki bilgileri görür. API ve PostgreSQL veritabanı İşleticinin yönettiği sunucuda çalışır; mevcut canlı akış Supabase kullanmaz. Sunucu/barındırma sağlayıcısı hizmetin işletilmesi kapsamında teknik verilere erişebilir.</p>
+<p>Google Firebase Cloud Messaging/Installations bildirim ve kurulum kimliklerini; Google Gemini yalnız ayrıca onay verilen metin/il girdisini; Google Play ve Apple etkin satın alma işlemlerinde doğrulama kayıtlarını işler. Gerçek SMS hizmeti etkinleştirildiğinde telefon ve doğrulama mesajı ilgili SMS sağlayıcısına iletilir; rehber veya SMS kutusu okunmaz.</p>
+<p>Harita karoları OpenStreetMap sunucusundan alınır. Harita sağlayıcısı IP adresini, uygulama tanıtıcısını ve istenen harita alanını görebilir; bu alan görüntülenen yaklaşık konumu gösterebilir. “Haritalarda aç” seçimiyle koordinatlar seçtiğiniz harita uygulamasına aktarılır. Web sayfası GitHub Pages üzerinde sunulur; sayfa erişiminde GitHub’ın teknik kayıtları kendi koşullarına tabidir.</p>
+<p>Google, Apple, GitHub ve harita hizmetlerinin yurt dışındaki altyapılarında veri işlenebilir. Aktarım ve veri hakları hakkında İşleticiye yukarıdaki iletişim adresinden başvurabilirsiniz. Kanunen yetkili kurum talepleri ayrıca karşılanır.</p>
+<h2>5. Saklama ve silme</h2>
+<p>Hesap verileri hesap açıkken, işleme amacı ve varsa yasal saklama gereği boyunca tutulur.</p>
+<p>Hesap silindiğinde profil, kullanıcıya bağlı ilan/teklif/bildirim, engelleme ve kredi kayıtları kaldırılır; canlı konum paylaşımı durur ve koordinatlar temizlenir. Karşı tarafın anlaşma kaydı kimlik bağlantısı kaldırılarak “Silinen kullanıcı” adıyla kalabilir; serbest notlar ve işlem günlüğü temizlenir. Kullanıcının aldığı puanlar silinir; verdiği bazı puanların sayısal değeri kimlik bağlantısı ve yorum metni olmadan kalabilir. Kullanıcının oluşturduğu şikâyet kayıtları silinir. Satın alma doğrulamasının gerekli sınırlı işlem kayıtları kalabilir; korunan makbuz başvurusu temizlenir ve ücretli hak sonlandırılır.</p>
+<p>Sunucudaki günlük şifreli yerel yedekler 14 gün tutulur. Aktif sistemden silinen verinin önceki yedeklerdeki kopyası da bu döngü sonunda kaldırılır. Yedekten kurtarma gerekirse daha önce işlenmiş silme talepleri yeniden uygulanır. Canlı konumun sona eren son koordinatı temizleme göreviyle yaklaşık bir dakika içinde aktif veritabanından kaldırılır; API sona ermiş konumu göstermez. Koordinatsız paylaşım metadatası normal çalışan temizleme göreviyle en fazla 7 günlük dönem için tutulur. AI kullanım kotası kayıtları hesap kimliği ve işlem zamanını içerir, yazılan metni/model cevabını içermez; eski kayıtlar sonraki kullanımda temizlenir, sabit bir otomatik silme süresi taahhüt edilmez.</p>
+<h2>6. Güvenlik ve haklarınız</h2>
+<p>Veriler HTTPS üzerinden aktarılır. Hesap ve işlem erişimleri API’de oturum ve taraf yetkileriyle sınırlandırılır. Premium/kredi hakları mağaza makbuzu doğrulanmadan verilmez. Profilinizi uygulamada düzenleyebilir, <strong>Profil → Hesabımı sil</strong> adımını kullanabilirsiniz. Uygulama dışı talep için <a href="#hesap-silme">Hesap ve Veri Silme</a> sayfasındaki e-posta yöntemini kullanın. Diğer başvurular için <a href="#kvkk">KVKK Aydınlatma Metni</a>.</p>
+<h2>7. Hedef kitle ve güncellemeler</h2>
+<p>Şantiye Ağı 18 yaş ve üzerindeki kullanıcılara yöneliktir. Politika değişiklikleri bu sayfanın tarihi güncellenerek yayımlanır. İletişim: <strong>yusuftaskiran753@gmail.com</strong>.</p>
+</section>
+
+<section id="kvkk" class="legal doc" aria-label="KVKK Aydınlatma Metni">
+<a class="back" href="#">← Ana sayfaya dön</a>
+<h1>Kişisel Verilerin İşlenmesine İlişkin Aydınlatma Metni</h1>
+<p><strong>Son güncelleme:</strong> 20.10.2026</p>
+<p><strong>Veri sorumlusu:</strong> Yusuf Taşkıran (&quot;Veri Sorumlusu&quot;)<br><strong>Adres:</strong> Merkez, Sivas / Türkiye<br><strong>E-posta:</strong> yusuftaskiran753@gmail.com</p>
+<h2>1. İşlenen kişisel veriler</h2>
+<ul><li><strong>Kimlik:</strong> Ad soyad</li><li><strong>İletişim:</strong> Telefon numarası</li><li><strong>Mesleki bilgi:</strong> Firma adı, meslek/rol, çalışılan il, deneyim yılı ve belgeler (sicil kartı oluşturulursa)</li><li><strong>Müşteri işlem:</strong> İlanlar, teklif ve talepler, anlaşma kayıtları, ödeme planı işaretleri, puan ve yorumlar, şikâyet ve engelleme kayıtları, bildirimler</li><li><strong>Konum:</strong> Kullanıcının ilana kendisi girdiği il ve tesis/makine konumu. Ayrıca kullanıcının başlattığı süreli canlı paylaşımda yaklaşık/tam cihaz konumu, ölçüm zamanı, doğruluk ve varsa hız/yön işlenir. Son ölçüm yalnız anlaşmanın diğer tarafına gösterilir; rota geçmişi oluşturulmaz.</li><li><strong>İsteğe bağlı asistan:</strong> Ayrı onay verilirse yazılan metin ve seçili il Google Gemini’ye gönderilir. Onay verilmezse yorumlama cihazda yapılır.</li><li><strong>Finans (sınırlı):</strong> Mağaza işlem kimliği, satın alınan ürün, abonelik süresi, kredi hareketleri. Kart bilgisi işlenmez.</li><li><strong>İşlem güvenliği:</strong> Hesap kimliği, oturum bilgileri, IP adresi, işlem zamanı</li></ul>
+<h2>2. İşleme amaçları ve hukuki sebepler</h2>
+<table><tr><th>Amaç</th><th>Hukuki sebep</th></tr><tr><td>Hesap oluşturma, ilan yayımlama, teklif/talep iletme, anlaşma kaydı tutma, iletişim bilgisinin yetkili kullanıcıya gösterilmesi</td><td>(c) Sözleşmenin kurulması ve ifası</td></tr><tr><td>Kullanıcının başlattığı süreli konumu anlaşma tarafına göstermek</td><td>Talep edilen hizmetin ifası; işletim sistemi izni ve kullanıcı başlatmasıyla sınırlı</td></tr><tr><td>İsteğe bağlı metin/il bilgisini Gemini’ye göndermek</td><td>Ayrı, isteğe bağlı kullanıcı onayı; onaysız yerel kullanım mümkündür</td></tr><tr><td>Premium ve kredinin mağaza üzerinden doğrulanması ve tanımlanması</td><td>(c) Sözleşmenin ifası</td></tr><tr><td>Kötüye kullanım, dolandırıcılık ve spamın önlenmesi; şikâyet ve engelleme; uygunsuz içeriğin kaldırılması</td><td>(f) Meşru menfaat</td></tr><tr><td>Bilgi güvenliğinin sağlanması, işlem kayıtlarının tutulması</td><td>(ç) Hukuki yükümlülük, (f) Meşru menfaat</td></tr><tr><td>Yetkili kurum ve mahkemelerin taleplerinin karşılanması, uyuşmazlıklarda delil</td><td>(ç) Hukuki yükümlülük, (e) Bir hakkın tesisi, kullanılması veya korunması</td></tr><tr><td>Satın alma kayıtlarının mevzuatta öngörülen süre boyunca saklanması</td><td>(a) Kanunlarda açıkça öngörülmesi, (ç) Hukuki yükümlülük</td></tr></table>
+<h2>3. Toplama yöntemi</h2>
+<p>Kişisel veriler, Uygulamaya girdiğiniz bilgilerden ve Uygulamayı kullanırken oluşan kayıtlardan elektronik ortamda toplanır. Mağaza işlem bilgileri Google ve Apple&#x27;dan otomatik olarak alınır.</p>
+<h2>4. Aktarım</h2>
+<ul><li><strong>Diğer kullanıcılar:</strong> Profil bilgileri, ilanlar ve puanlar herkese açıktır. Telefon numarası iletişim hakkı açan kullanıcıya, teklif/talebin iki tarafına ve anlaşmanın taraflarına gösterilir. Teklif/talep taraflarının erişimi kabulden önce başlar; ret veya geri çekme tek başına erişimi kaldırmaz. Teklif ve anlaşma bilgileri yalnızca ilgili taraflara gösterilir.</li><li><strong>Hizmet sağlayıcılar (yurt dışı):</strong></li><li>Barındırma ve PostgreSQL: İşleticinin yönettiği API sunucusu ve barındırma sağlayıcısı. Canlı API Supabase kullanmaz.</li><li>Bildirim/kurulum kimlikleri: Google Firebase Cloud Messaging/Installations</li><li>İsteğe bağlı asistan metni/il: Google Gemini; hizmet planına göre saklama, ücretsiz hizmette geliştirme/insan incelemesi uygulanabilir. <a href="https://ai.google.dev/gemini-api/terms">Sağlayıcı koşulları</a></li><li>Satın alma doğrulama: Google LLC / Google Ireland Ltd., Apple Inc. / Apple Distribution International</li><li>Harita karoları: OpenStreetMap (harita alanı, IP ve uygulama tanıtıcısı)</li><li>(Telefonla giriş açılırsa) SMS: etkinleştirilen SMS sağlayıcısı (telefon ve doğrulama mesajı)</li><li><strong>Yetkili kurum ve kuruluşlar:</strong> Kanunen yetkili kamu kurumları ve yargı mercileri.</li></ul>
+<p><strong>Yurt dışına aktarım:</strong> Google, Apple, GitHub Pages ve harita sağlayıcısının yurt dışı altyapılarında veri işlenebilir. Kullanılan hizmetler ve aktarım hakkında İşleticiye başvurabilirsiniz. Gerekli aktarım mekanizması ve sağlayıcı sözleşmeleri İşletici tarafından ilgili hizmet ve ülke bakımından ayrıca yürütülür; bu metin imzalanmış bir standart sözleşme bulunduğu iddiası içermez.</p>
+<h2>5. Saklama süresi</h2>
+<p>Hesap silindiğinde profil, kullanıcıya bağlı ilan/teklif/bildirim, engelleme ve kredi kayıtları kaldırılır; canlı konum paylaşımı durur ve koordinatlar temizlenir. Karşı tarafın anlaşma kaydı kimlik bağlantısı kaldırılarak “Silinen kullanıcı” adıyla kalabilir; serbest notlar ve işlem günlüğü temizlenir. Kullanıcının aldığı puanlar silinir; verdiği bazı puanların sayısal değeri kimlik bağlantısı ve yorum metni olmadan kalabilir. Kullanıcının oluşturduğu şikâyet kayıtları silinir. Satın alma doğrulamasının gerekli sınırlı işlem kayıtları kalabilir; korunan makbuz başvurusu temizlenir ve ücretli hak sonlandırılır.</p>
+<p>Sunucudaki günlük şifreli yerel yedekler 14 gün tutulur. Aktif sistemden silinen verinin önceki yedeklerdeki kopyası da bu döngü sonunda kaldırılır. Yedekten kurtarma gerekirse daha önce işlenmiş silme talepleri yeniden uygulanır. Canlı konumun sona eren son koordinatı temizleme göreviyle yaklaşık bir dakika içinde aktif veritabanından kaldırılır; API sona ermiş konumu göstermez. Koordinatsız paylaşım metadatası normal çalışan temizleme göreviyle en fazla 7 günlük dönem için tutulur. AI kullanım kotası kayıtları hesap kimliği ve işlem zamanını içerir, yazılan metni/model cevabını içermez; eski kayıtlar sonraki kullanımda temizlenir, sabit bir otomatik silme süresi taahhüt edilmez.</p>
+<h2>6. KVKK m. 11 kapsamındaki haklarınız</h2>
+<p>Veri sorumlusuna başvurarak:</p>
+<p>a) Kişisel verinizin işlenip işlenmediğini öğrenme,<br>b) İşlenmişse buna ilişkin bilgi talep etme,<br>c) İşlenme amacını ve amacına uygun kullanılıp kullanılmadığını öğrenme,<br>ç) Yurt içinde veya yurt dışında aktarıldığı üçüncü kişileri bilme,<br>d) Eksik veya yanlış işlenmişse düzeltilmesini isteme,<br>e) KVKK m. 7&#x27;deki şartlar çerçevesinde silinmesini veya yok edilmesini isteme,<br>f) (d) ve (e) bentlerindeki işlemlerin, verilerin aktarıldığı üçüncü kişilere bildirilmesini isteme,<br>g) İşlenen verilerin münhasıran otomatik sistemlerle analiz edilmesi suretiyle aleyhinize bir sonucun ortaya çıkmasına itiraz etme,<br>ğ) Kanuna aykırı işleme sebebiyle zarara uğramanız halinde zararın giderilmesini talep etme</p>
+<p>haklarına sahipsiniz.</p>
+<h2>7. Başvuru</h2>
+<p>Başvurunuzu, Veri Sorumlusuna Başvuru Usul ve Esasları Hakkında Tebliğ&#x27;e uygun olarak yazılı şekilde Merkez, Sivas / Türkiye adresine veya sistemimizde kayıtlı telefon numaranızla ilişkili olarak yusuftaskiran753@gmail.com adresine iletebilirsiniz. Başvurular en geç 30 gün içinde ücretsiz sonuçlandırılır.</p>
+</section>
+
+<section id="hesap-silme" class="legal doc" aria-label="Hesap ve Veri Silme">
+<a class="back" href="#">← Ana sayfaya dön</a>
+<h1>Şantiye Ağı Hesap ve Veri Silme</h1>
+<p><strong>Son güncelleme:</strong> 20.10.2026<br><strong>İşletici:</strong> Yusuf Taşkıran — yusuftaskiran753@gmail.com</p>
+<h2>Uygulamadan silme (önerilen)</h2>
+<ol><li>Şantiye Ağı uygulamasını açın.</li><li>Alt menüden <strong>Profil</strong>&#x27;e dokunun.</li><li>Listenin sonundaki <strong>Hesabımı sil</strong>&#x27;e dokunun ve onaylayın.</li></ol>
+<p>Talep sunucuda başarıyla tamamlandığında aktif hesaba erişim kapatılır ve aşağıdaki silme işlemleri uygulanır.</p>
+<h2>Uygulamaya erişiminiz yoksa</h2>
+<p>Hesabınızda kayıtlı telefon numarasını yazarak <strong>yusuftaskiran753@gmail.com</strong> adresine &quot;Hesap silme talebi&quot; konulu bir e-posta gönderin. Kimliğinizi doğruladıktan sonra hesabınızı en geç <strong>30 gün</strong> içinde siler ve size bilgi veririz.</p>
+<h2>Silinen ve sınırlı olarak kalan veriler</h2>
+<p>Hesap silindiğinde profil, kullanıcıya bağlı ilan/teklif/bildirim, engelleme ve kredi kayıtları kaldırılır; canlı konum paylaşımı durur ve koordinatlar temizlenir. Karşı tarafın anlaşma kaydı kimlik bağlantısı kaldırılarak “Silinen kullanıcı” adıyla kalabilir; serbest notlar ve işlem günlüğü temizlenir. Kullanıcının aldığı puanlar silinir; verdiği bazı puanların sayısal değeri kimlik bağlantısı ve yorum metni olmadan kalabilir. Kullanıcının oluşturduğu şikâyet kayıtları silinir. Satın alma doğrulamasının gerekli sınırlı işlem kayıtları kalabilir; korunan makbuz başvurusu temizlenir ve ücretli hak sonlandırılır.</p>
+<p>Sunucudaki günlük şifreli yerel yedekler 14 gün tutulur. Aktif sistemden silinen verinin önceki yedeklerdeki kopyası da bu döngü sonunda kaldırılır. Yedekten kurtarma gerekirse daha önce işlenmiş silme talepleri yeniden uygulanır. Canlı konumun sona eren son koordinatı temizleme göreviyle yaklaşık bir dakika içinde aktif veritabanından kaldırılır; API sona ermiş konumu göstermez. Koordinatsız paylaşım metadatası normal çalışan temizleme göreviyle en fazla 7 günlük dönem için tutulur. AI kullanım kotası kayıtları hesap kimliği ve işlem zamanını içerir, yazılan metni/model cevabını içermez; eski kayıtlar sonraki kullanımda temizlenir, sabit bir otomatik silme süresi taahhüt edilmez.</p>
+<h2>Aboneliğiniz</h2>
+<p>Hesabı silmek mağazadaki aboneliği <strong>iptal etmez.</strong> Ücretlendirmenin durması için aboneliği ayrıca iptal edin:</p>
+<ul><li><strong>Android:</strong> Google Play → Profil → Ödemeler ve abonelikler → Abonelikler</li><li><strong>iPhone:</strong> Ayarlar → [adınız] → Abonelikler</li></ul>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <strong style="color:var(--ink)">Şantiye Ağı</strong> · Yusuf Taşkıran, Sivas<br>
+      <a href="mailto:yusuftaskiran753@gmail.com">yusuftaskiran753@gmail.com</a><br>
+      <small>Şantiye Ağı bir ilan ve buluşma platformudur; taraflar arasındaki işlerin ve ödemelerin tarafı değildir.</small>
+    </div>
+    <nav aria-label="Yasal bağlantılar">
+      <a href="#kullanim-kosullari">Kullanım Koşulları</a>
+      <a href="#gizlilik">Gizlilik Politikası</a>
+      <a href="#kvkk">KVKK Aydınlatma Metni</a>
+      <a href="#hesap-silme">Hesap Silme</a>
+      <a href="../">Diğer uygulamalar</a>
+    </nav>
+  </div>
+</footer>
+<script>
+function yasalBasa(){var e=location.hash&&document.getElementById(location.hash.slice(1));if(e&&e.classList.contains('legal'))setTimeout(function(){window.scrollTo({top:0,behavior:'instant'})},30)}
+addEventListener('hashchange',yasalBasa);addEventListener('load',yasalBasa);
+</script>
+</body>
+</html>
