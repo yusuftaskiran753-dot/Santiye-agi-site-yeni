@@ -377,7 +377,7 @@ class DotNetBackend
         if (identity != _identityRevision) {
           throw const BackendException('AUTH_REQUIRED');
         }
-        return _request(
+        return await _request(
           method,
           path,
           body: body,

@@ -54,6 +54,18 @@ void main() {
       'f.u.c.k',
       'bitch',
       'Bu iş yapılmaz, sen salak mısın?',
+      'a.m.k.',
+      'A M K',
+      'a  m  k',
+      's.k.',
+      'S.K',
+      'amkkkk',
+      'a-m-k',
+      'a_m_k',
+      'o ç',
+      's i k t i r',
+      'p.i.ç',
+      'g.ö.t',
     ];
     for (final t in bad) {
       test('engellenir: $t', () => expect(ProfanityFilter.isOffensive(t), isTrue));
@@ -77,6 +89,11 @@ void main() {
       'Ali Kerim ile görüştüm',
       'Bu hafta 5 gün 8 saat çalışıldı',
       'Saksofon kursu gibi saksı değil',
+      'Şantiye pislik temizliği yapılacak',
+      'A.Ş. firması ile sözleşme imzalandı',
+      'M.K. Mühendislik ile çalıştık',
+      'Amcamın oğlu operatör, güvenilir',
+      'Fiyat 12.500 TL + KDV, saat 08.00',
     ];
     for (final t in good) {
       test('geçer: "$t"', () => expect(ProfanityFilter.isOffensive(t), isFalse));

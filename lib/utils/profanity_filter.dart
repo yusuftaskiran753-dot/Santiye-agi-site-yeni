@@ -50,7 +50,7 @@ class ProfanityFilter {
     'surtuk', 'fahise', 'yavsak', 'yavsac', 'ibne', 'ipne', 'ibina',
     'pust', 'lavuk', 'pickurusu', 'picler', 'piclik',
     'serefsiz', 'haysiyetsiz', 'namussuz', 'onursuz', 'karaktersiz',
-    'ahlaksiz', 'pislik', 'itoglu', 'itkopek', 'kopekoglu',
+    'ahlaksiz', 'itoglu', 'itkopek', 'kopekoglu',
     // Zeka / akıl hakareti
     'salak', 'aptal', 'gerzek', 'gerizekali', 'dangalak', 'andaval', 'ahmak',
     'budala', 'embesil', 'kretin', 'moron',
