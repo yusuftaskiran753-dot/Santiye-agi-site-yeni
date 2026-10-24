@@ -30,6 +30,8 @@
 	<true/>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Başlattığınız süreli canlı konum paylaşımında, konumunuz yalnız anlaşmanın diğer tarafına gösterilir. Paylaşımı istediğiniz an durdurabilirsiniz.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Profil fotoğrafı, kapak, gönderi ve hikaye için fotoğraf çekmek üzere kameraya erişim gerekir.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Yaptığınız işleri profilinizde paylaşmak için seçtiğiniz fotoğraflara erişim gerekir.</string>
 	<key>UIApplicationSceneManifest</key>

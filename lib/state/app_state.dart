@@ -11,9 +11,9 @@ import '../logic/deal_rules.dart';
 import '../logic/social_rules.dart';
 import '../models/models.dart';
 import '../models/social.dart';
-import '../models/trade.dart';
 import '../services/app_notice.dart';
 import '../services/backend.dart';
+import '../services/photo_storage.dart';
 import '../services/local_store.dart';
 import '../services/social_store.dart';
 import '../services/sync_queue.dart';
@@ -177,6 +177,7 @@ class AppState extends ChangeNotifier {
     social.load();
     await social.seedIfNeeded();
     await social.purgeExpiredMessages();
+    await _purgeStories();
     try {
       await backend.init();
       await refreshAuthPolicy();
@@ -1742,6 +1743,137 @@ class AppState extends ChangeNotifier {
     if (uid == null) return;
     social.follows[uid] = {...social.followingOf(uid)}..remove(userId);
     await social.persistFollows();
+    notifyListeners();
+  }
+
+  // ───────────── Profil / kapak fotoğrafı, hikaye, gönderi silme ─────────────
+
+  /// Kendi profil fotoğrafı (cihazdaki dosya yolu).
+  String get myAvatarPath => social.avatarOf(myId ?? '');
+
+  Future<void> _changeMedia({String? avatar, String? cover}) async {
+    final uid = myId;
+    if (uid == null) throw const BackendException('AUTH_REQUIRED');
+    final cur = social.media[uid] ?? SocialMedia(userId: uid);
+    final next = cur.copyWith(avatarPath: avatar, coverPath: cover);
+    social.media = {...social.media, uid: next};
+    await social.persistMedia();
+    // Yeni fotoğraf yerine geçen eski dosya (varsa) silinir.
+    if (avatar != null && cur.avatarPath != avatar) {
+      await PhotoStorage.deleteOwned(cur.avatarPath);
+    }
+    if (cover != null && cur.coverPath != cover) {
+      await PhotoStorage.deleteOwned(cur.coverPath);
+    }
+    notifyListeners();
+  }
+
+  Future<void> setProfilePhoto(String path) async {
+    if (path.trim().isEmpty) {
+      throw const BackendException('BAD_INPUT', 'Fotoğraf seçilmedi.');
+    }
+    await _changeMedia(avatar: path);
+  }
+
+  Future<void> setCoverPhoto(String path) async {
+    if (path.trim().isEmpty) {
+      throw const BackendException('BAD_INPUT', 'Fotoğraf seçilmedi.');
+    }
+    await _changeMedia(cover: path);
+  }
+
+  Future<void> removeProfilePhoto() => _changeMedia(avatar: '');
+
+  Future<void> removeCoverPhoto() => _changeMedia(cover: '');
+
+  Future<void> _purgeStories() async {
+    final removed = await social.purgeExpiredStories();
+    for (final s in removed) {
+      await PhotoStorage.deleteOwned(s.photoPath);
+    }
+  }
+
+  /// Hikaye paylaşır: fotoğraf ve/veya kısa yazı; 24 saat sonra silinir.
+  Future<SocialStory> addStory({String photoPath = '', String caption = ''}) async {
+    final uid = myId;
+    if (uid == null) throw const BackendException('AUTH_REQUIRED');
+    final clean = Sanitize.line(caption);
+    if (photoPath.trim().isEmpty && clean.isEmpty) {
+      throw const BackendException('BAD_INPUT', 'Fotoğraf ekleyin veya bir şeyler yazın.');
+    }
+    if (clean.runes.length > 140) {
+      throw const BackendException('BAD_INPUT', 'Hikaye yazısı en fazla 140 karakter olabilir.');
+    }
+    if (SocialRules.reviewMessage(clean) != null) {
+      throw const BackendException('BAD_INPUT', 'Uygunsuz ifade var.');
+    }
+    await _purgeStories();
+    final story = SocialStory(
+      id: newLocalId(),
+      authorId: uid,
+      photoPath: photoPath,
+      caption: clean,
+    );
+    social.stories = [...social.stories, story];
+    await social.persistStories();
+    notifyListeners();
+    return story;
+  }
+
+  Future<void> deleteStory(String storyId) async {
+    final uid = myId;
+    if (uid == null) throw const BackendException('AUTH_REQUIRED');
+    final story = social.stories.where((s) => s.id == storyId).firstOrNull;
+    if (story == null) return;
+    if (story.authorId != uid) {
+      throw const BackendException('FORBIDDEN', 'Yalnızca kendi hikayenizi silebilirsiniz.');
+    }
+    social.stories = [
+      for (final s in social.stories)
+        if (s.id != storyId) s,
+    ];
+    await social.persistStories();
+    await PhotoStorage.deleteOwned(story.photoPath);
+    notifyListeners();
+  }
+
+  /// Hikayesi olan (engellenmemiş) diğer kullanıcılar; en yeni hikaye önce.
+  List<String> get storyAuthorIds {
+    final uid = myId ?? '';
+    final latest = <String, DateTime>{};
+    for (final s in social.stories) {
+      if (s.isExpired() || s.authorId == uid || isBlocked(s.authorId)) continue;
+      final cur = latest[s.authorId];
+      if (cur == null || s.createdAt.isAfter(cur)) latest[s.authorId] = s.createdAt;
+    }
+    return latest.keys.toList()..sort((a, b) => latest[b]!.compareTo(latest[a]!));
+  }
+
+  /// Kendi gönderinizi siler (yorumları, beğenileri ve fotoğrafı ile).
+  Future<void> deletePost(String postId) async {
+    final uid = myId;
+    if (uid == null) throw const BackendException('AUTH_REQUIRED');
+    final post = social.posts.where((p) => p.id == postId).firstOrNull;
+    if (post == null) return;
+    if (post.authorId != uid) {
+      throw const BackendException('FORBIDDEN', 'Yalnızca kendi gönderinizi silebilirsiniz.');
+    }
+    if (post.tenderId != null) {
+      throw const BackendException('BAD_STATE', 'İhale gönderisi silinemez.');
+    }
+    social.posts = [
+      for (final p in social.posts)
+        if (p.id != postId) p,
+    ];
+    social.comments = [
+      for (final c in social.comments)
+        if (c.postId != postId) c,
+    ];
+    social.likes = {...social.likes}..remove(postId);
+    await social.persistPosts();
+    await social.persistComments();
+    await social.persistLikes();
+    await PhotoStorage.deleteOwned(post.photoPath);
     notifyListeners();
   }
 

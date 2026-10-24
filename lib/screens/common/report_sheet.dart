@@ -5,7 +5,9 @@ import '../../config.dart';
 import '../../models/models.dart';
 import '../../state/app_state.dart';
 import '../../utils/validators.dart';
+import '../../utils/legal_notices.dart';
 import '../../widgets/common.dart';
+import '../../widgets/legal_notice_bar.dart';
 import '../social/block_reason_sheet.dart';
 
 /// Şikâyet formu. [targetType]: ilan türü adı · profil · anlasma
@@ -82,7 +84,9 @@ class _ReportSheetState extends State<_ReportSheet> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text('Şikâyet et', style: TextStyle(fontSize: 21, fontWeight: FontWeight.w800)),
-          const SizedBox(height: 4),
+          const SizedBox(height: 10),
+          const LegalNoticeBar(detail: LegalNotices.responsibility),
+          const SizedBox(height: 10),
           Text('Şikâyetiniz gizli tutulur; karşı tarafa adınız bildirilmez.', style: TextStyle(color: muted)),
           const SizedBox(height: 12),
           RadioGroup<String>(

@@ -776,3 +776,33 @@ Mevcut yük, makine, malzeme ve personel ilanlarına dokunulmadı; yalnızca ekl
 - Şantiye Akışı, yorumlar, ihaleler, engelleme kayıtları ve kanıt fotoğrafları şimdilik yalnızca cihazda tutulur (sunucuya bağlı değil). Başka telefondaki kullanıcıların birbirinin ihale tekliflerini görmesi ve karşı tarafın gerçek telefon numarasının onay sonrası gösterilmesi için sunucu bağlantısı gerekir; şu an numara yalnızca örnek kullanıcılar için gösterilebilir. Mesaj / sohbet ekranı henüz yok (yalnızca 24 saat silme kuralı ve uyarı hazır).
 - Küfür süzgeci kelime listesine dayanır; her yazımı yakalamayı garanti etmez, şikâyet ve inceleme akışı yine gereklidir. Yasal uyarı metinleri avukat onaylı değildir.
 - Canlı IIS, mağaza veya gerçek telefonla kontrol yapılmadı.
+
+### Son denetim: profil fotoğrafı, paylaş, hikaye, yasal kapsam — 24 Ekim 2026
+
+Tüm proje bir kez daha baştan sona denetlendi. Eksik çıkanlar tamamlandı; mevcut ilan koduna dokunulmadı, yalnızca ekleme yapıldı.
+
+**Eksik çıkıp tamamlananlar**
+- Profil fotoğrafı ve kapak fotoğrafı: kullanıcı kamera ile çekebilir ya da galeriden seçebilir, değiştirebilir veya kaldırabilir. Profil fotoğrafı akışta, yorumlarda, ihale tekliflerinde ve profilde görünür; fotoğraf yoksa baş harfler gösterilir. Fotoğraflar uygulamanın kalıcı klasörüne kopyalanır (telefon geçici dosyayı silse bile kaybolmaz); yenisi seçilince eski dosya silinir.
+- Instagram benzeri profil: kapak + büyük profil fotoğrafı, Gönderi / Takipçi / Takip sayıları, "Takip et" düğmesi ve 3 sütunlu gönderi ızgarası. Izgaradan gönderi açılınca fotoğraf, beğeni ve yorum görünür.
+- Gönderi yazarken artık kamera da seçilebilir; fotoğrafa çift dokunarak beğenilir; kendi gönderinizi silebilirsiniz (yorum, beğeni ve fotoğrafıyla birlikte).
+- "Paylaş" düğmesi: gönderi metni WhatsApp'ta paylaşılır ya da kopyalanır (fotoğraf bu yolla gönderilmez).
+- Hikayeler: akışın üstünde hikaye çubuğu, fotoğraf ve/veya kısa yazıyla hikaye ekleme, tam ekran görüntüleme ve silme. Hikayeler 24 saat sonra otomatik silinir (fotoğraf dosyası da silinir). Hikaye yazısında küfür engellenir; engellenen kişinin hikayesi görünmez.
+- Yasal uyarı çubuğu artık Şantiye Akışı, gönderi detayı, profil (kendi ve başkasının), fotoğraf seçme, hikaye, şikâyet, yorum, teklif, ihale ve engelleme ekranlarının hepsinde görünür. 17 ekran/pencere için otomatik test eklendi. Akışın altına sorumluluk metni ile Kullanım Koşulları / Gizlilik / KVKK bağlantıları eklendi.
+- KVKK / Gizlilik / Kullanım Koşulları metinlerine (hem .md dosyaları hem web sayfası) Şantiye Akışı, fotoğraf, yorum, hikaye, ihale, mesajların 24 saatte silinmesi ve engelleme kanıtı bölümleri eklendi. Bu metinler avukat onaylı değildir; yayından önce hukuki kontrol gerekir.
+- iPhone için kamera izni açıklaması (NSCameraUsageDescription) eklendi; olmasaydı iOS kamera açılırken uygulamayı kapatırdı. path_provider doğrudan bağımlılık yapıldı (sürüm değişmedi).
+
+**Doğru çıkanlar (değiştirilmedi)**
+- Teklif verince telefon gizli; ihaleyi açan onaylayana kadar iki tarafa da gösterilmez. Küfür listesi 120 girdi (a.m.k, s.k, a m k, s*ktir, siiiktir, s1kt1r dahil yakalanır). Beğen ve yorum çalışıyor; yorumda "çalıştın mı?" ve kanıt zorunlu.
+
+**Küçük düzeltmeler**
+- Küfür listesinden "pislik" çıkarıldı ("pislik temizliği" gibi şantiye cümleleri engelleniyordu).
+- flutter analyze'daki eski 2 uyarı giderildi (gereksiz import, dotnet_backend.dart'ta await eksikliği). Analiz sonucu: sorun yok.
+
+**Kontrol sonucu:** flutter analyze: sorun yok. flutter test: 374 test geçti. Ekranlar telefonda değil, otomatik widget testi ve test ortamında çizilen görüntülerle kontrol edildi.
+
+**Açık kalanlar (yapılmış sayılmaz)**
+- Gerçek telefonda kamera/galeri denenmedi; kamera izni ve açılışı gerçek iPhone/Android'de elle denenmeli.
+- Fotoğraf, hikaye, takip, beğeni ve yorumlar şimdilik yalnızca o telefonda tutulur; başka telefondaki kullanıcılar birbirinin profil/kapak fotoğrafını, hikayesini veya gönderisini göremez. Bunun için sunucu (backend) tarafında fotoğraf yükleme ve sosyal akış uçları gerekir; yazılmadı.
+- "Mesajlar 24 saat içinde silinir" uyarısı yalnızca sosyal akış/ihale ekranlarında gösterilir, çünkü cihazdaki mesajlar gerçekten 24 saatte silinir. İlan, teklif/talep ve anlaşma ekranlarındaki mesaj/notlar sunucuda saklanır ve 24 saatte silinmez; oraya aynı cümleyi koymak yanlış beyan olurdu, bu yüzden konmadı. İstenirse sunucuda 24 saatlik silme işi yazılmalı.
+- İlan teklif/talep akışında telefon, mevcut tasarım ve Gizlilik Politikası gereği iletişim hakkı açan kullanıcıya ve teklif/talebin iki tarafına (kabulden önce de) gösterilir. Bu akış değiştirilmedi; "ancak anlaşma olunca göster" isteniyorsa ayrı bir karar ve backend değişikliği gerekir.
+- Backend (ListingRules.cs) değişikliği hâlâ derlenmedi/test edilmedi; yayın öncesi derlenmeli.

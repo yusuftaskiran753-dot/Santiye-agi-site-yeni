@@ -9,6 +9,7 @@ import '../../utils/format.dart';
 import '../../utils/legal_notices.dart';
 import '../../widgets/common.dart';
 import '../../widgets/legal_notice_bar.dart';
+import '../../widgets/user_avatar.dart';
 import '../listings/contact_sheet.dart';
 import 'bid_sheet.dart';
 import 'tender_award_screen.dart';
@@ -292,7 +293,7 @@ class _OwnerBidCard extends StatelessWidget {
         children: [
           Row(
             children: [
-              Avatar(name, radius: 20),
+              UserAvatar(userId: bid.bidderId, name: name, radius: 20),
               const SizedBox(width: 12),
               Expanded(
                 child: Column(

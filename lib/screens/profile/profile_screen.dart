@@ -10,6 +10,9 @@ import '../../state/app_state.dart';
 import '../../theme.dart';
 import '../../utils/format.dart';
 import '../../widgets/common.dart';
+import '../../utils/legal_notices.dart';
+import '../../widgets/legal_notice_bar.dart';
+import '../../widgets/user_avatar.dart';
 import '../billing/billing_flows.dart';
 import '../haul/haul_screen.dart';
 import '../listings/forms/listing_forms.dart';
@@ -59,7 +62,7 @@ class ProfileScreen extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        Avatar(me.displayName, radius: 28),
+                        UserAvatar(userId: me.id, name: me.displayName, radius: 28),
                         const SizedBox(width: 14),
                         Expanded(
                           child: Column(
@@ -116,6 +119,8 @@ class ProfileScreen extends StatelessWidget {
               color: AppColors.grey,
             ),
           ],
+          const SizedBox(height: 12),
+          const LegalNoticeBar(detail: LegalNotices.kvkk),
           WorkGallery(userId: me.id),
           const SectionTitle('Üyelik'),
           Card(

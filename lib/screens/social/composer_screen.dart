@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
 import '../../models/social.dart';
@@ -10,6 +9,8 @@ import '../../utils/profanity_filter.dart';
 import '../../utils/validators.dart';
 import '../../widgets/common.dart';
 import '../../widgets/legal_notice_bar.dart';
+import 'evidence_photo_box.dart';
+import 'photo_source_sheet.dart';
 
 class ComposerScreen extends StatefulWidget {
   const ComposerScreen({super.key, this.kind = SocialPostKind.work});
@@ -39,9 +40,13 @@ class _ComposerScreenState extends State<ComposerScreen> {
   }
 
   Future<void> _pick() async {
-    final file = await ImagePicker().pickImage(source: ImageSource.gallery, maxWidth: 1600);
-    if (file == null) return;
-    setState(() => _photo = file.path);
+    final path = await choosePhoto(
+      context,
+      title: 'Gönderi fotoğrafı',
+      canRemove: _photo.isNotEmpty,
+    );
+    if (path == null || !mounted) return;
+    setState(() => _photo = path);
   }
 
   Future<void> _submit() async {
@@ -98,11 +103,11 @@ class _ComposerScreenState extends State<ComposerScreen> {
               onChanged: (s) => setState(() => _sectors = s),
             ),
             const SizedBox(height: 12),
-            // TODO: ızgara duvarı, filtreler, kapak kırpma.
-            OutlinedButton.icon(
-              onPressed: _pick,
-              icon: const Icon(Icons.photo_outlined),
-              label: Text(_photo.isEmpty ? 'Fotoğraf ekle' : 'Fotoğraf seçildi'),
+            EvidencePhotoBox(
+              path: _photo,
+              label: 'Fotoğraf ekle (kamera / galeri)',
+              onPick: _pick,
+              onClear: () => setState(() => _photo = ''),
             ),
           ],
         ),

@@ -56,6 +56,26 @@ class LegalNotices {
   static const post =
       'Paylaşımlar kamuya açıktır; küfür, hakaret ve iftira yayınlanmaz.';
 
+  /// Profil, kapak, gönderi ve hikaye fotoğrafları için (KVKK).
+  static const photo =
+      'Fotoğraflar kişisel veridir. Yalnızca kendinize ait veya izin aldığınız '
+      'fotoğrafları paylaşın; başkasının yüzünü izinsiz yayımlamayın. '
+      'Fotoğraflarınız bu cihazda tutulur, istediğiniz zaman kaldırabilirsiniz.';
+
+  static const story =
+      'Hikayeler 24 saat sonra otomatik silinir. Hakaret, tehdit ve izinsiz '
+      'kişisel veri içeren hikaye paylaşmayın.';
+
+  /// KVKK aydınlatma metnine yönlendiren kısa not.
+  static const kvkk =
+      'Kişisel verileriniz 6698 sayılı KVKK kapsamında işlenir. Ayrıntı için '
+      'KVKK Aydınlatma Metni\'ni okuyabilirsiniz.';
+
+  static const responsibility =
+      'Paylaştığınız içeriğin (yazı, fotoğraf, yorum, teklif) hukuki '
+      'sorumluluğu size aittir. Uygulama yalnızca aracıdır; şikâyet edilen '
+      'içerik kaldırılabilir, hesap kısıtlanabilir.';
+
   /// İşleme özel metnin önüne her zaman [everyAction] eklenir.
   static String withEveryAction(String specific) =>
       specific.isEmpty ? everyAction : '$everyAction $specific';

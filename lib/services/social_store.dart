@@ -20,6 +20,8 @@ class SocialStore {
   static const _kTenders = 'social_tenders';
   static const _kBids = 'social_bids';
   static const _kBlocks = 'social_block_reasons';
+  static const _kMedia = 'social_media';
+  static const _kStories = 'social_stories';
   static const _kSeed = 'social_seeded_v1';
 
   final Map<String, SocialIdentity> identities = {};
@@ -34,7 +36,13 @@ class SocialStore {
   List<Tender> tenders = [];
   List<TenderBid> bids = [];
   Map<String, BlockRecord> blockReasons = {};
+
+  /// userId -> profil / kapak fotoğrafı
+  Map<String, SocialMedia> media = {};
+  List<SocialStory> stories = [];
   bool _messagesPurged = false;
+  bool _storiesPurged = false;
+  List<SocialStory> _expiredAtLoad = [];
 
   void load() {
     identities
@@ -71,7 +79,69 @@ class SocialStore {
       for (final m in _store.readMaps(_kBlocks))
         asString(m['user_id']): BlockRecord.fromJson(m),
     };
+    media = {
+      for (final m in _store.readMaps(_kMedia))
+        asString(m['user_id']): SocialMedia.fromJson(m),
+    };
+    final allStories = [
+      for (final m in _store.readMaps(_kStories)) SocialStory.fromJson(m),
+    ];
+    // 24 saatlik ömrünü dolduran hikayeler belleğe hiç alınmaz.
+    stories = [
+      for (final s in allStories)
+        if (!s.isExpired()) s,
+    ];
+    _storiesPurged = stories.length != allStories.length;
+    // Açılışta elenen hikayelerin fotoğraf dosyaları sonra temizlenir.
+    _expiredAtLoad = [
+      for (final s in allStories)
+        if (s.isExpired()) s,
+    ];
   }
+
+  /// Süresi dolan hikayeleri kayıttan siler; silinenleri döner (dosyaları
+  /// temizlemek için).
+  Future<List<SocialStory>> purgeExpiredStories({DateTime? now}) async {
+    final removed = [
+      ..._expiredAtLoad,
+      for (final s in stories)
+        if (s.isExpired(now)) s,
+    ];
+    _expiredAtLoad = [];
+    if (removed.isNotEmpty) {
+      stories = [
+        for (final s in stories)
+          if (!s.isExpired(now)) s,
+      ];
+    }
+    if (removed.isNotEmpty || _storiesPurged) await persistStories();
+    _storiesPurged = false;
+    return removed;
+  }
+
+  String avatarOf(String userId) => media[userId]?.avatarPath ?? '';
+
+  String coverOf(String userId) => media[userId]?.coverPath ?? '';
+
+  /// Kullanıcının süresi dolmamış hikayeleri (eskiden yeniye).
+  List<SocialStory> activeStoriesOf(String userId, {DateTime? now}) =>
+      stories
+          .where((s) => s.authorId == userId && !s.isExpired(now))
+          .toList()
+        ..sort((a, b) => a.createdAt.compareTo(b.createdAt));
+
+  int followerCount(String userId) =>
+      follows.values.where((f) => f.contains(userId)).length;
+
+  int followingCount(String userId) =>
+      followingOf(userId).where((id) => id != userId).length;
+
+  Future<void> persistMedia() => _store.writeMaps(_kMedia, [
+    for (final m in media.values) m.toJson(),
+  ]);
+
+  Future<void> persistStories() =>
+      _store.writeMaps(_kStories, [for (final s in stories) s.toJson()]);
 
   /// Mesajlar 24 saat içinde silinir (yasal uyarıdaki söz).
   /// Süresi dolanları bellekten ve kayıttan kaldırır; kaldırılan varsa true.
@@ -262,6 +332,8 @@ class SocialStore {
     await persistChat();
     await persistTenders();
     await persistBlocks();
+    await persistMedia();
+    await persistStories();
   }
 
   String displayName(String userId, {PublicProfile? me}) {

@@ -8,6 +8,7 @@ import '../../utils/legal_notices.dart';
 import '../../utils/profanity_filter.dart';
 import '../../widgets/common.dart';
 import '../../widgets/legal_notice_bar.dart';
+import '../../widgets/user_avatar.dart';
 import 'evidence_photo_box.dart';
 
 Future<void> showCommentsSheet(BuildContext context, SocialPost post) =>
@@ -276,7 +277,7 @@ class _CommentTile extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Avatar(name, radius: 18),
+          UserAvatar(userId: comment.authorId, name: name, radius: 18),
           const SizedBox(width: 12),
           Expanded(
             child: Column(

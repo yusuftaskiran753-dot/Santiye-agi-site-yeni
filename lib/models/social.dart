@@ -455,3 +455,81 @@ class BlockRecord {
     'evidence_photo_path': evidencePhotoPath,
   };
 }
+
+/// Bir kullanıcının profil ve kapak fotoğrafı (cihazdaki dosya yolları).
+class SocialMedia {
+  const SocialMedia({
+    required this.userId,
+    this.avatarPath = '',
+    this.coverPath = '',
+  });
+
+  final String userId;
+  final String avatarPath;
+  final String coverPath;
+
+  bool get isEmpty => avatarPath.isEmpty && coverPath.isEmpty;
+
+  SocialMedia copyWith({String? avatarPath, String? coverPath}) => SocialMedia(
+    userId: userId,
+    avatarPath: avatarPath ?? this.avatarPath,
+    coverPath: coverPath ?? this.coverPath,
+  );
+
+  factory SocialMedia.fromJson(Map<String, dynamic> j) => SocialMedia(
+    userId: asString(j['user_id']),
+    avatarPath: asString(j['avatar_path']),
+    coverPath: asString(j['cover_path']),
+  );
+
+  Map<String, dynamic> toJson() => {
+    'user_id': userId,
+    'avatar_path': avatarPath,
+    'cover_path': coverPath,
+  };
+}
+
+/// 24 saat sonra kendiliğinden silinen hikaye (fotoğraf ve/veya kısa yazı).
+class SocialStory {
+  /// Hikaye bu süre sonunda silinir.
+  static const Duration lifetime = Duration(hours: 24);
+
+  SocialStory({
+    required this.id,
+    required this.authorId,
+    this.photoPath = '',
+    this.caption = '',
+    DateTime? createdAt,
+  }) : createdAt = createdAt ?? DateTime.now();
+
+  final String id;
+  final String authorId;
+  final String photoPath;
+  final String caption;
+  final DateTime createdAt;
+
+  bool isExpired([DateTime? now]) =>
+      (now ?? DateTime.now()).difference(createdAt) >= lifetime;
+
+  /// Silinmesine kalan süre (süresi dolduysa sıfır).
+  Duration remaining([DateTime? now]) {
+    final left = lifetime - (now ?? DateTime.now()).difference(createdAt);
+    return left.isNegative ? Duration.zero : left;
+  }
+
+  factory SocialStory.fromJson(Map<String, dynamic> j) => SocialStory(
+    id: asString(j['id']),
+    authorId: asString(j['author_id']),
+    photoPath: asString(j['photo_path']),
+    caption: asString(j['caption']),
+    createdAt: asDateOrNull(j['created_at']),
+  );
+
+  Map<String, dynamic> toJson() => {
+    'id': id,
+    'author_id': authorId,
+    'photo_path': photoPath,
+    'caption': caption,
+    'created_at': isoOrNull(createdAt),
+  };
+}

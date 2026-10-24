@@ -9,6 +9,7 @@ import '../../utils/format.dart';
 import '../../utils/legal_notices.dart';
 import '../../widgets/common.dart';
 import '../../widgets/legal_notice_bar.dart';
+import '../../widgets/user_avatar.dart';
 
 /// İhale bitince "En iyi teklifi seç" ekranı: teklifler en düşük tutardan
 /// yükseğe sıralanır, en düşük teklif önerilir; ihaleyi açan kazananı seçer.
@@ -162,7 +163,7 @@ class _BidChoice extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Avatar(name, radius: 20),
+                  UserAvatar(userId: bid.bidderId, name: name, radius: 20),
                   const SizedBox(width: 12),
                   Expanded(
                     child: Column(

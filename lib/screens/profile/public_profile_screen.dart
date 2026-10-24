@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -9,7 +11,13 @@ import '../../widgets/common.dart';
 import '../common/report_sheet.dart';
 import '../listings/cards.dart';
 import '../listings/listing_detail_screen.dart';
+import '../../utils/legal_notices.dart';
+import '../../widgets/legal_notice_bar.dart';
+import '../../widgets/user_avatar.dart';
 import '../social/block_reason_sheet.dart';
+import '../social/composer_screen.dart';
+import '../social/post_detail_screen.dart';
+import '../social/profile_photo_actions.dart';
 import 'work_gallery.dart';
 
 /// Bir kullanıcının herkese açık profili: rozetler, puanlar, yorumlar, ilanları.
@@ -92,8 +100,10 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
           return ListView(
             padding: const EdgeInsets.fromLTRB(16, 4, 16, 24),
             children: [
-              _ProfileHeader(profile: profile),
+              _ProfileHeader(profile: profile, isMe: isMe),
+              if (!isMe && !blocked) _FollowButton(userId: widget.userId),
               WorkGallery(userId: widget.userId),
+              _PostsGrid(userId: widget.userId, isMe: isMe),
               if (blocked) ...[
                 const SizedBox(height: 12),
                 const InfoBanner(text: 'Bu kullanıcıyı engellediniz.', icon: Icons.block, color: AppColors.red),
@@ -130,74 +140,289 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
 }
 
 class _ProfileHeader extends StatelessWidget {
-  const _ProfileHeader({required this.profile});
+  const _ProfileHeader({required this.profile, required this.isMe});
 
   final PublicProfile profile;
+  final bool isMe;
 
   @override
   Widget build(BuildContext context) {
     final p = profile;
-    final muted = Theme.of(context).colorScheme.onSurfaceVariant;
+    final app = context.watch<AppState>();
+    final scheme = Theme.of(context).colorScheme;
+    final muted = scheme.onSurfaceVariant;
     final since = p.memberMonths;
+    final cover = app.social.coverOf(p.id);
+    final posts = app.wallOf(p.id).length;
     return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Avatar(p.displayName, radius: 30),
-                const SizedBox(width: 14),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(p.displayName, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w800)),
-                      if (p.company.isNotEmpty) Text(p.name, style: TextStyle(color: muted)),
-                      const SizedBox(height: 2),
-                      Text(
-                        '${p.role.label}${p.city.isEmpty ? '' : ' · ${p.city}'}',
-                        style: TextStyle(fontSize: 13, color: muted),
+      clipBehavior: Clip.antiAlias,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            height: 172,
+            child: Stack(
+            clipBehavior: Clip.none,
+            children: [
+              Positioned(
+                top: 0,
+                left: 0,
+                right: 0,
+                height: 130,
+                child: Container(
+                key: const Key('profile-cover'),
+                width: double.infinity,
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [AppColors.brand, AppColors.purple],
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                  ),
+                ),
+                child: cover.isEmpty
+                    ? null
+                    : Image.file(
+                        File(cover),
+                        key: ValueKey('cover-$cover'),
+                        fit: BoxFit.cover,
+                        errorBuilder: (_, _, _) => const SizedBox.shrink(),
                       ),
-                    ],
+              )),
+              if (isMe)
+                Positioned(
+                  right: 8,
+                  top: 8,
+                  child: IconButton.filledTonal(
+                    key: const Key('cover-edit'),
+                    tooltip: 'Kapak fotoğrafını değiştir',
+                    onPressed: () => changeCoverPhoto(context),
+                    icon: const Icon(Icons.photo_camera_outlined),
                   ),
                 ),
-              ],
-            ),
-            const SizedBox(height: 14),
-            Row(
+              Positioned(
+                left: 16,
+                top: 88,
+                child: Stack(
+                  clipBehavior: Clip.none,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(4),
+                      decoration: BoxDecoration(
+                        color: scheme.surface,
+                        shape: BoxShape.circle,
+                      ),
+                      child: UserAvatar(
+                        userId: p.id,
+                        name: p.displayName,
+                        radius: 40,
+                        ring: app.social.activeStoriesOf(p.id).isNotEmpty,
+                      ),
+                    ),
+                    if (isMe)
+                      Positioned(
+                        right: -2,
+                        bottom: -2,
+                        child: IconButton.filled(
+                          key: const Key('avatar-edit'),
+                          tooltip: 'Profil fotoğrafını değiştir',
+                          visualDensity: VisualDensity.compact,
+                          onPressed: () => changeProfilePhoto(context),
+                          icon: const Icon(Icons.photo_camera_outlined, size: 20),
+                        ),
+                      ),
+                  ],
+                ),
+              ),
+            ],
+          )),
+          const SizedBox(height: 8),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Expanded(
-                  child: _Metric(
-                    value: p.ratingCount == 0 ? '—' : p.ratingAvg.toStringAsFixed(1).replaceAll('.', ','),
-                    label: '${p.ratingCount} değerlendirme',
-                    icon: Icons.star_rounded,
-                    color: const Color(0xFFF5A623),
-                  ),
+                Text(p.displayName, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w800)),
+                if (p.company.isNotEmpty) Text(p.name, style: TextStyle(color: muted)),
+                const SizedBox(height: 2),
+                Text(
+                  '${p.role.label}${p.city.isEmpty ? '' : ' · ${p.city}'}',
+                  style: TextStyle(fontSize: 13, color: muted),
                 ),
-                Expanded(
-                  child: _Metric(
-                    value: '${p.dealsCompleted}',
-                    label: 'tamamlanan iş',
-                    icon: Icons.task_alt_rounded,
-                    color: AppColors.green,
-                  ),
+                const SizedBox(height: 14),
+                Row(
+                  children: [
+                    Expanded(child: _Count(key: const Key('count-posts'), value: posts, label: 'Gönderi')),
+                    Expanded(child: _Count(key: const Key('count-followers'), value: app.social.followerCount(p.id), label: 'Takipçi')),
+                    Expanded(child: _Count(key: const Key('count-following'), value: app.social.followingCount(p.id), label: 'Takip')),
+                  ],
                 ),
-                Expanded(
-                  child: _Metric(
-                    value: since <= 0 ? 'Yeni' : (since >= 12 ? '${since ~/ 12} yıl' : '$since ay'),
-                    label: 'üyelik',
-                    icon: Icons.calendar_month_outlined,
-                    color: AppColors.blue,
-                  ),
+                const SizedBox(height: 14),
+                Row(
+                  children: [
+                    Expanded(
+                      child: _Metric(
+                        value: p.ratingCount == 0 ? '—' : p.ratingAvg.toStringAsFixed(1).replaceAll('.', ','),
+                        label: '${p.ratingCount} değerlendirme',
+                        icon: Icons.star_rounded,
+                        color: const Color(0xFFF5A623),
+                      ),
+                    ),
+                    Expanded(
+                      child: _Metric(
+                        value: '${p.dealsCompleted}',
+                        label: 'tamamlanan iş',
+                        icon: Icons.task_alt_rounded,
+                        color: AppColors.green,
+                      ),
+                    ),
+                    Expanded(
+                      child: _Metric(
+                        value: since <= 0 ? 'Yeni' : (since >= 12 ? '${since ~/ 12} yıl' : '$since ay'),
+                        label: 'üyelik',
+                        icon: Icons.calendar_month_outlined,
+                        color: AppColors.blue,
+                      ),
+                    ),
+                  ],
                 ),
+                const SizedBox(height: 14),
+                TrustBadges(p),
               ],
             ),
-            const SizedBox(height: 14),
-            TrustBadges(p),
-          ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _Count extends StatelessWidget {
+  const _Count({super.key, required this.value, required this.label});
+
+  final int value;
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text('$value', style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w800)),
+        const SizedBox(height: 2),
+        Text(label, style: TextStyle(fontSize: 12.5, color: Theme.of(context).colorScheme.onSurfaceVariant)),
+      ],
+    );
+  }
+}
+
+/// Başkasının profilinde büyük "Takip et / Takiptesin" düğmesi.
+class _FollowButton extends StatelessWidget {
+  const _FollowButton({required this.userId});
+
+  final String userId;
+
+  @override
+  Widget build(BuildContext context) {
+    final app = context.watch<AppState>();
+    final following = app.following.contains(userId);
+    return Padding(
+      padding: const EdgeInsets.only(top: 12),
+      child: SizedBox(
+        height: 52,
+        width: double.infinity,
+        child: AsyncButton(
+          key: const Key('follow-button'),
+          label: following ? 'Takiptesin' : 'Takip et',
+          icon: following ? Icons.check_rounded : Icons.person_add_alt_1_rounded,
+          outlined: following,
+          onPressed: () => following ? app.unfollow(userId) : app.follow(userId),
         ),
+      ),
+    );
+  }
+}
+
+/// Instagram profili gibi 3 sütunlu gönderi ızgarası.
+class _PostsGrid extends StatelessWidget {
+  const _PostsGrid({required this.userId, required this.isMe});
+
+  final String userId;
+  final bool isMe;
+
+  @override
+  Widget build(BuildContext context) {
+    final app = context.watch<AppState>();
+    final posts = app.wallOf(userId);
+    final muted = Theme.of(context).colorScheme.onSurfaceVariant;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SectionTitle('Gönderiler (${posts.length})'),
+        const LegalNoticeBar(detail: LegalNotices.photo),
+        const SizedBox(height: 12),
+        if (posts.isEmpty)
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('Henüz gönderi yok.', style: TextStyle(color: muted)),
+                if (isMe) ...[
+                  const SizedBox(height: 10),
+                  SizedBox(
+                    height: 52,
+                    width: double.infinity,
+                    child: OutlinedButton.icon(
+                      key: const Key('first-post'),
+                      onPressed: () => pushPage<void>(context, const ComposerScreen()),
+                      icon: const Icon(Icons.add_a_photo_outlined),
+                      label: const Text('İlk gönderini paylaş', style: TextStyle(fontSize: 16)),
+                    ),
+                  ),
+                ],
+              ],
+            ),
+          )
+        else
+          GridView.count(
+            crossAxisCount: 3,
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            mainAxisSpacing: 4,
+            crossAxisSpacing: 4,
+            children: [
+              for (final p in posts)
+                InkWell(
+                  key: Key('grid-post-${p.id}'),
+                  onTap: () => pushPage<void>(context, PostDetailScreen(postId: p.id)),
+                  child: p.photoPath.isNotEmpty
+                      ? Image.file(
+                          File(p.photoPath),
+                          fit: BoxFit.cover,
+                          errorBuilder: (_, _, _) => _TextTile(text: p.caption),
+                        )
+                      : _TextTile(text: p.caption),
+                ),
+            ],
+          ),
+      ],
+    );
+  }
+}
+
+class _TextTile extends StatelessWidget {
+  const _TextTile({required this.text});
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(8),
+      color: AppColors.brand.withValues(alpha: 0.08),
+      child: Text(
+        text,
+        maxLines: 5,
+        overflow: TextOverflow.ellipsis,
+        style: const TextStyle(fontSize: 12.5, height: 1.3),
       ),
     );
   }
