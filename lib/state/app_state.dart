@@ -176,6 +176,7 @@ class AppState extends ChangeNotifier {
         : DemoData.haulPoints();
     social.load();
     await social.seedIfNeeded();
+    await social.purgeExpiredMessages();
     try {
       await backend.init();
       await refreshAuthPolicy();
@@ -1554,13 +1555,33 @@ class AppState extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> block(String userId, {String reason = ''}) async {
+  /// Sebep seçimi ve kanıt fotoğrafı zorunlu engelleme (arayüz bunu kullanır).
+  /// Eksikse [BackendException] fırlatır ve hiçbir şey kaydedilmez.
+  Future<void> blockWithProof(
+    String userId, {
+    required String reason,
+    required String evidencePhotoPath,
+  }) async {
+    final err = SocialRules.reviewBlock(
+      reason: Sanitize.line(reason),
+      evidencePhotoPath: evidencePhotoPath,
+    );
+    if (err != null) throw BackendException('BAD_INPUT', err);
+    await block(userId, reason: reason, evidencePhotoPath: evidencePhotoPath);
+  }
+
+  Future<void> block(
+    String userId, {
+    String reason = '',
+    String evidencePhotoPath = '',
+  }) async {
     lastWriteQueued = false;
     final why = Sanitize.line(reason);
     social.blockReasons[userId] = BlockRecord(
       userId: userId,
       reason: why.isEmpty ? 'Belirtilmedi' : why,
       at: DateTime.now(),
+      evidencePhotoPath: evidencePhotoPath,
     );
     await social.persistBlocks();
     if (!(isLive && DemoData.isDemoId(userId))) {
@@ -1744,6 +1765,8 @@ class AppState extends ChangeNotifier {
     required bool negative,
     required bool workedTogether,
     required String evidenceNote,
+    bool workedAnswered = true,
+    String evidencePhotoPath = '',
   }) async {
     final uid = myId;
     if (uid == null) throw const BackendException('AUTH_REQUIRED');
@@ -1753,8 +1776,14 @@ class AppState extends ChangeNotifier {
       negative: negative,
       workedTogether: workedTogether,
       evidenceNote: evidenceNote,
+      workedAnswered: workedAnswered,
+      hasEvidencePhoto: evidencePhotoPath.trim().isNotEmpty,
     );
-    if (review.verdict == CommentVerdict.filtered) return review;
+    // Küfürlü ya da kanıtsız yorum hiç kaydedilmez.
+    if (review.verdict == CommentVerdict.filtered ||
+        review.verdict == CommentVerdict.evidenceRequired) {
+      return review;
+    }
     social.comments.add(
       SocialComment(
         id: newLocalId(),
@@ -1764,6 +1793,7 @@ class AppState extends ChangeNotifier {
         negative: negative,
         workedTogether: workedTogether,
         evidenceNote: Sanitize.line(evidenceNote),
+        evidencePhotoPath: evidencePhotoPath,
         status: review.status,
       ),
     );
@@ -1824,9 +1854,19 @@ class AppState extends ChangeNotifier {
     required String city,
     required List<WorkSector> sectors,
     required List<TradeProfession> allowed,
+    DateTime? closesAt,
   }) async {
     final uid = myId;
     if (uid == null) throw const BackendException('AUTH_REQUIRED');
+    if (SocialRules.reviewMessage('$title $detail') != null) {
+      throw const BackendException('BAD_INPUT', 'Uygunsuz ifade var.');
+    }
+    if (closesAt != null && !closesAt.isAfter(DateTime.now())) {
+      throw const BackendException(
+        'BAD_INPUT',
+        'Bitiş zamanı ileri bir tarih olmalı.',
+      );
+    }
     if (!myIdentity.profession.canOpenTender) {
       throw const BackendException(
         'FORBIDDEN',
@@ -1844,6 +1884,7 @@ class AppState extends ChangeNotifier {
       city: city,
       sectors: sectors,
       allowedProfessions: allowed,
+      closesAt: closesAt,
     );
     social.tenders.insert(0, tender);
     await social.persistTenders();
@@ -1875,18 +1916,156 @@ class AppState extends ChangeNotifier {
         'Bu ihaleye meslek grubunuz katılamaz.',
       );
     }
+    final cleanNote = Sanitize.block(note);
+    final err = SocialRules.reviewBid(amount: amount, note: cleanNote);
+    if (err != null) throw BackendException('BAD_INPUT', err);
+    if (SocialRules.reviewMessage(referenceNote) != null) {
+      throw const BackendException('BAD_INPUT', 'Uygunsuz ifade var.');
+    }
+    if (social.bidOf(tender.id, uid) != null) {
+      throw const BackendException(
+        'BAD_STATE',
+        'Bu ihaleye zaten teklif verdiniz.',
+      );
+    }
     final bid = TenderBid(
       id: newLocalId(),
       tenderId: tender.id,
       bidderId: uid,
       amount: amount,
-      note: Sanitize.block(note),
+      note: cleanNote,
       referenceNote: Sanitize.block(referenceNote),
     );
     social.bids.add(bid);
     await social.persistTenders();
     notifyListeners();
     return bid;
+  }
+
+  // ───────────── İhale: onay, kapanış, kazanan seçimi ─────────────
+
+  Tender _ownedTender(String tenderId) {
+    final uid = myId;
+    if (uid == null) throw const BackendException('AUTH_REQUIRED');
+    final t = social.tenderById(tenderId);
+    if (t == null) throw const BackendException('NOT_FOUND');
+    if (!SocialRules.canDecide(tender: t, myId: uid)) {
+      throw const BackendException(
+        'FORBIDDEN',
+        'Bu işlemi yalnızca ihaleyi açan yapabilir.',
+      );
+    }
+    return t;
+  }
+
+  void _replaceTender(Tender t) {
+    social.tenders = [
+      for (final x in social.tenders)
+        if (x.id == t.id) t else x,
+    ];
+  }
+
+  void _replaceBid(TenderBid b) {
+    social.bids = [
+      for (final x in social.bids)
+        if (x.id == b.id) b else x,
+    ];
+  }
+
+  /// İhaleyi açan, bu teklif sahibiyle telefon paylaşımını onaylar.
+  Future<void> approveBidContact(String tenderId, String bidId) async {
+    _ownedTender(tenderId);
+    final bid = social.bids.where((b) => b.id == bidId && b.tenderId == tenderId).firstOrNull;
+    if (bid == null) throw const BackendException('NOT_FOUND');
+    _replaceBid(bid.copyWith(contactApproved: true));
+    await social.persistTenders();
+    notifyListeners();
+  }
+
+  /// İhaleyi açan, süre dolmadan teklif almayı bitirir.
+  Future<void> closeTender(String tenderId) async {
+    final t = _ownedTender(tenderId);
+    if (t.status != TenderStatus.open) return;
+    _replaceTender(t.copyWith(status: TenderStatus.closed));
+    await social.persistTenders();
+    notifyListeners();
+  }
+
+  /// İhale bittikten sonra kazanan teklifi seçer: ihale "Verildi" olur, seçilen
+  /// teklifin iletişimi onaylanır, diğer teklifler "Seçilmedi" işaretlenir.
+  Future<void> awardTender(String tenderId, String bidId) async {
+    final t = _ownedTender(tenderId);
+    if (t.status == TenderStatus.awarded) {
+      throw const BackendException('BAD_STATE', 'Bu ihalenin kazananı seçildi.');
+    }
+    if (t.acceptsBids()) {
+      throw const BackendException(
+        'BAD_STATE',
+        'İhale hâlâ açık. Önce teklif almayı bitirin.',
+      );
+    }
+    final bids = social.bidsFor(tenderId);
+    final winner = bids.where((b) => b.id == bidId).firstOrNull;
+    if (winner == null) throw const BackendException('NOT_FOUND');
+    for (final b in bids) {
+      _replaceBid(
+        b.id == winner.id
+            ? b.copyWith(decision: BidStatus.selected, contactApproved: true)
+            : b.copyWith(decision: BidStatus.notSelected),
+      );
+    }
+    _replaceTender(
+      t.copyWith(status: TenderStatus.awarded, awardedBidId: winner.id),
+    );
+    await social.persistTenders();
+    notifyListeners();
+  }
+
+  /// Teklif sahibinin / ihaleyi açanın telefonu. Teklif onaylanmadıkça asla
+  /// verilmez. Not: ihaleler şimdilik cihazda tutulur; karşı tarafın gerçek
+  /// numarası yalnızca örnek kullanıcılar ve kendi numaranız için bilinir.
+  Future<ContactInfo> contactForTenderBid(Tender tender, TenderBid bid) async {
+    final uid = myId;
+    if (uid == null) throw const BackendException('AUTH_REQUIRED');
+    if (!SocialRules.canRevealPhone(tender: tender, bid: bid, viewerId: uid)) {
+      throw const BackendException(
+        'FORBIDDEN',
+        'Telefon numarası, ihaleyi açan onaylayana kadar gizlidir.',
+      );
+    }
+    final otherId = uid == tender.ownerId ? bid.bidderId : tender.ownerId;
+    if (DemoData.isDemoId(otherId)) {
+      final p = DemoData.profile(otherId);
+      return _maskUnverifiedPhone(
+        ContactInfo(
+          userId: otherId,
+          name: p.displayName,
+          phone: DemoData.phoneOf(otherId),
+          phoneVerified: p.phoneVerified,
+        ),
+      );
+    }
+    throw const BackendException(
+      'NOT_FOUND',
+      'Bu kullanıcının numarası bu cihazda yok. İhaleler sunucuya '
+          'bağlandığında numara, onaydan sonra burada görünecek.',
+    );
+  }
+
+  /// Meslek ve sektör bilgisini günceller (sosyal akış kimliği).
+  Future<void> updateMyIdentity({
+    required TradeProfession profession,
+    required List<WorkSector> sectors,
+  }) async {
+    final uid = myId;
+    if (uid == null) throw const BackendException('AUTH_REQUIRED');
+    if (sectors.isEmpty) {
+      throw const BackendException('BAD_INPUT', 'En az bir sektör seçin.');
+    }
+    await social.saveIdentity(
+      SocialIdentity(userId: uid, profession: profession, sectors: sectors),
+    );
+    notifyListeners();
   }
 
   ChatThread _threadWith(String otherId) {
@@ -1908,9 +2087,10 @@ class AppState extends ChangeNotifier {
       ..sort((a, b) => b.updatedAt.compareTo(a.updatedAt));
   }
 
-  List<ChatMessage> messagesOf(String threadId) =>
-      social.messages.where((m) => m.threadId == threadId).toList()
-        ..sort((a, b) => a.createdAt.compareTo(b.createdAt));
+  List<ChatMessage> messagesOf(String threadId) => social.messages
+      .where((m) => m.threadId == threadId && !m.isExpired())
+      .toList()
+    ..sort((a, b) => a.createdAt.compareTo(b.createdAt));
 
   Future<ChatThread> openChat(String otherId) async {
     final t = _threadWith(otherId);
@@ -1926,6 +2106,7 @@ class AppState extends ChangeNotifier {
     final err = SocialRules.reviewMessage(clean);
     if (err != null) throw BackendException('BAD_INPUT', err);
     if (clean.isEmpty) throw const BackendException('BAD_INPUT', 'Mesaj boş.');
+    await social.purgeExpiredMessages();
     social.messages.add(
       ChatMessage(
         id: newLocalId(),

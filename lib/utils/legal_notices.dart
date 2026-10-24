@@ -24,4 +24,39 @@ class LegalNotices {
   static const block =
       'Engelleme gerekçesi yalnızca güvenlik kaydı içindir; karşı tarafa '
       'gösterilmez. Asılsız veya kötü niyetli gerekçe şikâyet konusu olabilir.';
+
+  // ───────────── Her işlemde gösterilen kısa uyarı ─────────────
+
+  /// Yorum, mesaj, gönderi, teklif ve engelleme dâhil her işlemde görünür.
+  static const everyAction =
+      'Mesajlar 24 saat içinde silinir, hakaret yasaktır.';
+
+  static const workedTogether =
+      'Bu kişiyle daha önce çalıştıysanız "Evet" deyin. Çalışmadıysanız '
+      '"Hayır" deyip kanıt (fotoğraf veya açıklama) ekleyin; kanıtsız yorum '
+      'yayına çıkmaz.';
+
+  static const bid =
+      'Teklifinizin yanındaki açıklama zorunludur. Telefon numaranız, ihaleyi '
+      'açan onaylamadan kimseye gösterilmez.';
+
+  static const phoneHidden =
+      'Telefon numaraları, ihaleyi açan teklifi onaylayana kadar iki tarafa '
+      'da gizlidir.';
+
+  static const award =
+      'Kazanan teklifi seçtiğinizde ihale kapanır. Sözleşme ve ödeme '
+      'taraflar arasındadır; uygulama ödemeye aracılık etmez.';
+
+  static const blockEvidence =
+      'Engellemek için bir sebep seçmeli ve kanıt fotoğrafı eklemelisiniz. '
+      'Kanıt yalnızca bu cihazdaki güvenlik kaydında tutulur, karşı tarafa '
+      'gösterilmez.';
+
+  static const post =
+      'Paylaşımlar kamuya açıktır; küfür, hakaret ve iftira yayınlanmaz.';
+
+  /// İşleme özel metnin önüne her zaman [everyAction] eklenir.
+  static String withEveryAction(String specific) =>
+      specific.isEmpty ? everyAction : '$everyAction $specific';
 }

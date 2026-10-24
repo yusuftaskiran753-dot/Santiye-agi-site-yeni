@@ -34,6 +34,7 @@ class SocialStore {
   List<Tender> tenders = [];
   List<TenderBid> bids = [];
   Map<String, BlockRecord> blockReasons = {};
+  bool _messagesPurged = false;
 
   void load() {
     identities
@@ -55,15 +56,35 @@ class SocialStore {
         asString(m['user_id']): asStringList(m['following']).toSet(),
     };
     threads = [for (final m in _store.readMaps(_kThreads)) ChatThread.fromJson(m)];
-    messages = [
+    final allMessages = [
       for (final m in _store.readMaps(_kMessages)) ChatMessage.fromJson(m),
     ];
+    // 24 saatlik ömrünü dolduran mesajlar belleğe hiç alınmaz.
+    messages = [
+      for (final m in allMessages)
+        if (!m.isExpired()) m,
+    ];
+    _messagesPurged = messages.length != allMessages.length;
     tenders = [for (final m in _store.readMaps(_kTenders)) Tender.fromJson(m)];
     bids = [for (final m in _store.readMaps(_kBids)) TenderBid.fromJson(m)];
     blockReasons = {
       for (final m in _store.readMaps(_kBlocks))
         asString(m['user_id']): BlockRecord.fromJson(m),
     };
+  }
+
+  /// Mesajlar 24 saat içinde silinir (yasal uyarıdaki söz).
+  /// Süresi dolanları bellekten ve kayıttan kaldırır; kaldırılan varsa true.
+  Future<bool> purgeExpiredMessages({DateTime? now}) async {
+    final before = messages.length;
+    messages = [
+      for (final m in messages)
+        if (!m.isExpired(now)) m,
+    ];
+    final changed = _messagesPurged || messages.length != before;
+    _messagesPurged = false;
+    if (changed) await persistChat();
+    return changed;
   }
 
   Future<void> seedIfNeeded() async {
@@ -181,6 +202,22 @@ class SocialStore {
   List<TenderBid> bidsFor(String tenderId) =>
       bids.where((b) => b.tenderId == tenderId).toList()
         ..sort((a, b) => a.amount.compareTo(b.amount));
+
+  Tender? tenderById(String? id) {
+    if (id == null) return null;
+    for (final t in tenders) {
+      if (t.id == id) return t;
+    }
+    return null;
+  }
+
+  /// [userId] bu ihaleye daha önce teklif verdiyse o teklif.
+  TenderBid? bidOf(String tenderId, String userId) {
+    for (final b in bids) {
+      if (b.tenderId == tenderId && b.bidderId == userId) return b;
+    }
+    return null;
+  }
 
   Future<void> persistIdentities() => _store.writeMaps(_kIdent, [
     for (final i in identities.values) i.toJson(),
