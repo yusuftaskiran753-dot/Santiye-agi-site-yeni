@@ -12,6 +12,7 @@ import '../billing/billing_flows.dart';
 import '../common/report_sheet.dart';
 import '../deals/deal_detail_screen.dart';
 import '../profile/public_profile_screen.dart';
+import '../social/block_reason_sheet.dart';
 import '../work/request_tile.dart';
 import 'cards.dart';
 import 'contact_sheet.dart';
@@ -501,18 +502,8 @@ class _MoreMenu extends StatelessWidget {
             ownerId: l.ownerId,
           );
         case 'block':
-          if (!await confirm(
-            context,
-            '${l.owner.displayName} engellensin mi?',
-            message:
-                'Bu kullanıcının ilanlarını görmezsiniz ve birbirinize teklif gönderemezsiniz. '
-                'Profil → Engellenen kullanıcılar bölümünden kaldırabilirsiniz.',
-            ok: 'Engelle',
-            danger: true,
-          )) {
-            return;
-          }
-          await app.block(l.ownerId);
+          // Sebep seçimi ve kanıt fotoğrafı zorunlu.
+          if (!await showBlockReasonSheet(context, l.ownerId)) return;
           if (context.mounted) {
             Navigator.of(context).pop();
             showSaved(

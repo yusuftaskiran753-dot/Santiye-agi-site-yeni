@@ -6,8 +6,10 @@ import '../../models/social.dart';
 import '../../models/trade.dart';
 import '../../state/app_state.dart';
 import '../../utils/legal_notices.dart';
+import '../../utils/profanity_filter.dart';
 import '../../utils/validators.dart';
 import '../../widgets/common.dart';
+import '../../widgets/legal_notice_bar.dart';
 
 class ComposerScreen extends StatefulWidget {
   const ComposerScreen({super.key, this.kind = SocialPostKind.work});
@@ -65,7 +67,6 @@ class _ComposerScreenState extends State<ComposerScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final muted = Theme.of(context).colorScheme.onSurfaceVariant;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(title: Text(widget.kind.label)),
@@ -74,14 +75,17 @@ class _ComposerScreenState extends State<ComposerScreen> {
         child: ListView(
           padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
           children: [
-            Text(LegalNotices.comments, style: TextStyle(fontSize: 12, color: muted, height: 1.35)),
-            const SizedBox(height: 12),
+            const LegalNoticeBar(detail: LegalNotices.post),
+            const SizedBox(height: 16),
             LabeledField(
               label: 'Ne yaptınız / ne arıyorsunuz?',
               controller: _caption,
               maxLength: FieldLimits.note,
               maxLines: 5,
-              validator: Validators.text(label: 'Metin', min: 4, max: FieldLimits.note),
+              validator: Validators.all([
+                Validators.text(label: 'Metin', min: 4, max: FieldLimits.note),
+                ProfanityFilter.validate,
+              ]),
             ),
             const FieldLabel('Sektör'),
             MultiChoiceWrap<WorkSector>(
@@ -105,7 +109,10 @@ class _ComposerScreenState extends State<ComposerScreen> {
           padding: const EdgeInsets.fromLTRB(16, 8, 16, 12),
           child: SizedBox(
             height: 52,
-            child: FilledButton(onPressed: _submit, child: const Text('Paylaş')),
+            child: FilledButton(
+              onPressed: _submit,
+              child: const Text('Paylaş', style: TextStyle(fontSize: 16)),
+            ),
           ),
         ),
       ),

@@ -14,6 +14,8 @@ import '../listings/listing_detail_screen.dart';
 import '../loads/backhaul_screen.dart';
 import '../market/market_screen.dart';
 import '../assistant/assistant_screen.dart';
+import '../social/feed_screen.dart';
+import '../trade/tender_list_screen.dart';
 
 /// Ana sayfa: selam, arama, kategoriler, yapılacaklar, role göre öneri ve
 /// bölgedeki yeni ilanlar.
@@ -132,6 +134,8 @@ class HomeScreen extends StatelessWidget {
               _AskBox(
                 onTap: () => pushPage<void>(context, const AssistantScreen()),
               ),
+              const SizedBox(height: 12),
+              const _SocialEntry(),
               const SizedBox(height: 16),
               Row(
                 children: [
@@ -194,6 +198,33 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+/// Şantiye Akışı ve İhaleler giriş düğmeleri.
+class _SocialEntry extends StatelessWidget {
+  const _SocialEntry();
+
+  @override
+  Widget build(BuildContext context) {
+    Widget button(Key key, IconData icon, String label, Widget page) => Expanded(
+      child: SizedBox(
+        height: 54,
+        child: OutlinedButton.icon(
+          key: key,
+          onPressed: () => pushPage<void>(context, page),
+          icon: Icon(icon),
+          label: Text(label, style: const TextStyle(fontSize: 15)),
+        ),
+      ),
+    );
+    return Row(
+      children: [
+        button(const Key('home-feed'), Icons.dynamic_feed_rounded, 'Şantiye Akışı', const FeedScreen()),
+        const SizedBox(width: 10),
+        button(const Key('home-tenders'), Icons.gavel_rounded, 'İhaleler', const TenderListScreen()),
+      ],
     );
   }
 }

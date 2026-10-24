@@ -9,6 +9,7 @@ import '../../widgets/common.dart';
 import '../common/report_sheet.dart';
 import '../listings/cards.dart';
 import '../listings/listing_detail_screen.dart';
+import '../social/block_reason_sheet.dart';
 import 'work_gallery.dart';
 
 /// Bir kullanıcının herkese açık profili: rozetler, puanlar, yorumlar, ilanları.
@@ -58,11 +59,8 @@ class _PublicProfileScreenState extends State<PublicProfileScreen> {
                     if (blocked) {
                       await app.unblock(widget.userId);
                     } else {
-                      if (!await confirm(context, 'Kullanıcı engellensin mi?',
-                          message: 'İlanlarını görmezsiniz ve birbirinize teklif gönderemezsiniz.', ok: 'Engelle', danger: true)) {
-                        return;
-                      }
-                      await app.block(widget.userId);
+                      // Sebep seçimi ve kanıt fotoğrafı zorunlu.
+                      if (!await showBlockReasonSheet(context, widget.userId)) return;
                     }
                     if (context.mounted) showSnack(context, blocked ? 'Engel kaldırıldı' : 'Kullanıcı engellendi');
                   } catch (e) {

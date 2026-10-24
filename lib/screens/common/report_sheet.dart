@@ -6,6 +6,7 @@ import '../../models/models.dart';
 import '../../state/app_state.dart';
 import '../../utils/validators.dart';
 import '../../widgets/common.dart';
+import '../social/block_reason_sheet.dart';
 
 /// Şikâyet formu. [targetType]: ilan türü adı · profil · anlasma
 Future<void> showReportSheet(
@@ -55,7 +56,10 @@ class _ReportSheetState extends State<_ReportSheet> {
       );
       final queued = app.lastWriteQueued;
       final owner = widget.ownerId;
-      if (_alsoBlock && owner != null && owner != app.myId) await app.block(owner);
+      // Engelleme için sebep ve kanıt fotoğrafı sorulur; vazgeçilirse yalnız şikâyet gider.
+      if (_alsoBlock && owner != null && owner != app.myId && mounted) {
+        await showBlockReasonSheet(context, owner);
+      }
       navigator.pop();
       showSaved(
         null,

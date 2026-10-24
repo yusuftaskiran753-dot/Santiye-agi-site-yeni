@@ -740,3 +740,39 @@ Ayrıntılı teknik kayıt: NET_BACKEND_ILK_ASAMA.md. Sunucu kurulum rehberi: ba
 - Müşterinin düzenleyip geri gönderebilmesi için güncel Git kaynaklarından temiz ZIP hazırlandı. Flutter uygulaması, backend kaynakları, testler ve kurulum belgeleri birlikte bulunur. Paket, çalışma klasörünün tamamı kopyalanarak değil Git'in izlediği dosyalardan üretilir.
 - Derleme klasörleri, APK/AAB/IPA, yayın paketleri, Git geçmişi, gerçek sunucu ayarları, servis hesabı dosyaları ve imza anahtarları teslim ZIP'ine alınmaz. Örnek yapılandırmalar kaynakta kalır; kaynak teslimi canlı sunucuya kurulum veya SMS'in etkinleştirilmesi anlamına gelmez.
 - Yerel teslim yeri output/customer-source-20261024/Santiye_Agi_Temiz_Kaynak_2026-10-24.zip. ZIP dosya listesi izlenen kaynaklarla karşılaştırıldı; build/yerel ayar/imza anahtarı dosyaları için dışlama kontrolü yapıldı. Bu işlem uygulama davranışını değiştirmediğinden yeni uygulama derlemesi veya canlı test yapılmadı.
+
+### Şantiye Akışı, İhale ve güvenlik eksikleri tamamlandı — 24 Ekim 2026
+
+Mevcut yük, makine, malzeme ve personel ilanlarına dokunulmadı; yalnızca ekleme yapıldı. Değişikliklerin hepsi Türkçe metinlerle hazırlandı.
+
+**1. İhale (ticaret) kuralları**
+- İhaleye teklif verildiğinde telefon numarası kimseye gösterilmez. Yalnızca ihaleyi açan, teklif sahibi için "Telefon paylaşımını onayla" derse iki taraf birbirinin numarasını görebilir. Teklif vermeyen üçüncü kişiler diğer tekliflerin tutarını da göremez.
+- Fiyat teklifinde açıklama zorunlu oldu (en az 15 karakter, küfür içeremez). Açıklamasız teklif kaydedilmez. Aynı kişi bir ihaleye bir kez teklif verebilir.
+- İhaleye "teklif verme son günü" eklendi. Süre dolunca ya da ihaleyi açan "Teklif almayı bitir" deyince ihale teklif almaz.
+- Yeni "En iyi teklifi seç" ekranı: teklifler en düşükten yükseğe sıralanır, en düşük teklif önerilir, ihaleyi açan kazananı seçer. Kazanan seçilince ihale "Verildi" olur, kazananla telefon paylaşımı otomatik onaylanır, diğerleri "Seçilmedi" işaretlenir.
+- İhale listesi, ihale detayı, teklif verme ve ihale açma (müteahhit / şantiye şefi) ekranları eklendi. Ana sayfaya "Şantiye Akışı" ve "İhaleler" düğmeleri konuldu.
+
+**2. Şantiye Akışı (sosyal)**
+- Sade, beyaz zeminli, kartlar arasında bol boşluk bırakan, büyük düğmeli (Beğen, Yorum, İhaleyi gör) Instagram benzeri akış ekranı yapıldı. Meslek ve sektör seçimi akıştan değiştirilebilir.
+- Yorum yazarken küfür varsa anında uyarılır ve gönder düğmesi kapanır; küfürlü yorum kaydedilmez.
+- Her yorumda "Bu kişiyle çalıştınız mı? Evet / Hayır" sorusu zorunlu. "Hayır" denirse kanıt (fotoğraf veya açıklama) istenir; kanıtsız yorum kaydedilmez. Olumsuz yorum için kanıt yoksa yorum eskisi gibi incelemeye düşer.
+
+**3. Güvenlik ve yasal**
+- Küfür / argo listesi 100'den fazla Türkçe kelimeyle genişletildi. "a.m.k", "s.k", "s i k t i r", "s*ktir", "siiiktir", "s1kt1r" gibi harf sansürlü yazımlar da yakalanır. "sık sık", "sıkıntı", "götür", "alçak gerilim", "mal sahibi" gibi normal sözler engellenmez. İlan metinlerindeki eski süzgeç aynen duruyor.
+- "Mesajlar 24 saat içinde silinir, hakaret yasaktır." uyarısı yorum, paylaşım, teklif, ihale, ihale açma ve engelleme ekranlarında hep görünür. Sözün tutulması için cihazdaki mesajlar 24 saat sonra gerçekten silinir.
+- Engelleme artık sebep seçimi ve kanıt fotoğrafı olmadan yapılamıyor (profil, ilan detayı ve şikâyet ekranındaki "da engelle" seçeneği dahil). Kanıt fotoğrafı yalnızca bu cihazdaki güvenlik kaydında tutulur, karşı tarafa gösterilmez.
+
+**4. Sabit listeler**
+- Sektörler: İnşaat, Hafriyat, Altyapı, Nakliye, Mermer, Maden, Orman eklendi/düzenlendi (eski sektörler duruyor).
+- Meslekler: Ustabaşı, Bekçi, güvenlik görevlisi, tüm operatör ve şoför türleri, ustalar, mühendisler, maden / mermer / orman meslekleri dahil 82 meslek gruplanarak listelendi. Personel ilanı rol listesi de genişletildi.
+- Makineler: Tır, dorse, eklemli damper, hiyap, örümcek vinç, asfalt freze, TBM, orman ve mermer makineleri dahil 88 makine türü. Eski makine adları ve sıraları değişmedi, kayıtlı ilanlar aynen çalışır.
+
+**Kontrol sonucu**
+- flutter test: 326 test geçti (başlangıçta 234). flutter analyze: yalnızca eskiden var olan 2 uyarı kaldı. Yeni testler küfür süzgecini, yorum/ihale/engelleme kurallarını ve ekranları kontrol eder.
+- Telefonda ya da emülatörde elle deneme yapılmadı; ekranlar yalnızca otomatik widget testleriyle kontrol edildi.
+
+**Açık kalanlar (yapılmış sayılmaz)**
+- Sunucu tarafı: ilan oluşturma doğrulaması (backend/SantiyeAgi.Api/Domain/ListingRules.cs) yeni makine ve rol adlarını kabul edecek şekilde güncellendi, ancak bu bilgisayarda .NET SDK olmadığı için derlenmedi ve backend testleri çalıştırılmadı. Yeni makine / rol seçenekleri ilan verirken kullanılmadan önce backend derlenip test edilmeli ve IIS'e yayınlanmalı; aksi halde sunucu yeni türleri reddeder. Not: eski sunucu zaten uygulamadaki 32 makine türünden yalnızca 10'unu kabul ediyordu; bu fark da aynı güncellemeyle kapanır.
+- Şantiye Akışı, yorumlar, ihaleler, engelleme kayıtları ve kanıt fotoğrafları şimdilik yalnızca cihazda tutulur (sunucuya bağlı değil). Başka telefondaki kullanıcıların birbirinin ihale tekliflerini görmesi ve karşı tarafın gerçek telefon numarasının onay sonrası gösterilmesi için sunucu bağlantısı gerekir; şu an numara yalnızca örnek kullanıcılar için gösterilebilir. Mesaj / sohbet ekranı henüz yok (yalnızca 24 saat silme kuralı ve uyarı hazır).
+- Küfür süzgeci kelime listesine dayanır; her yazımı yakalamayı garanti etmez, şikâyet ve inceleme akışı yine gereklidir. Yasal uyarı metinleri avukat onaylı değildir.
+- Canlı IIS, mağaza veya gerçek telefonla kontrol yapılmadı.
